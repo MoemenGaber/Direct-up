@@ -1,0 +1,31 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<main class="site_main">
+    <div class="top_bar text-center ptb_2">
+        <h1 class="mt-0 mb-0">انشــــاء حساب</h1>
+    </div>
+    <section>
+        <div class="login_form">
+            <div class="container">
+                <div class="m-width-500 m-auto">
+                    {{ register_error }}
+                    <form action="{{ register_page }}" method="post">
+                        {# <input name="register-first-name" class="mb-3 w-100" type="text" placeholder="الإسم الأول"> #}
+                        {# <input name="register-second-name" class="mb-3 w-100" type="text" placeholder="الإسم الثاني"> #}
+                        <input name="register-username" class="mb-3 w-100" type="text" placeholder="اســـم المستخدم">
+                        <input name="register-email" class="mb-3 w-100" type="email" placeholder="البريد الالكتروني " style="direction:rtl">
+                        <input name="register-phone" class="mb-3 w-100" type="text" placeholder="رقـــم الهاتف">
+                        <input name="register-password" class="mb-3 w-100" type="password" placeholder="الرقـــم السري">
+                        <input name="confirm-password" class="mb-3 w-100" type="password" placeholder="تاكيد الرقـــم السري ">
+                        <button name="submit-registered-user" class="red_btn w-100 mt_2" type="submit">انشــــاء الحساب</button>
+                    </form>
+                    <hr class="mtb_2"><a class="text-red" href="{{ login_page }}">تــسجيل الدخــول</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

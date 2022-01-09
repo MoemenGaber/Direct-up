@@ -1,0 +1,29 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<main class="site_main">
+		<div class="top_bar text-center ptb_2">
+			<h1 class="mt-0 mb-0">{{ post.post_title }}</h1><nav aria-label="breadcrumb">
+{#				<ol class="breadcrumb">#}
+{#					<li class="breadcrumb-item">الاسكندريه</li>#}
+{#					<li class="breadcrumb-item">سيارات و مركبات</li>#}
+{#					<li class="breadcrumb-item active" aria-current="page">سيارات للبيع</li>#}
+{#				</ol>#}
+			</nav>
+		</div>
+		{% if ad_type == 'cars' %}
+			{% include 'views/single-ads/car-ad.twig' %}
+		{% endif %}
+		{% if ad_type == 'akar' %}
+			{% include 'views/single-ads/aqar-ad.twig' %}
+		{% endif %}
+		{% if ad_type == 'equipment' %}
+			{% include 'views/single-ads/equipment-ad.twig' %}
+		{% endif %}
+		<!-- ------- Modal -------------->
+		</div>
+	</main>
+
+
+{% endblock %}

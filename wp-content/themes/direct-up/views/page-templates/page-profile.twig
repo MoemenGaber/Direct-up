@@ -1,0 +1,106 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <main class="site_main">
+        <div class="top_bar text-center ptb_2">
+            <h1 class="mt-0 mb-0">حسابي</h1>
+        </div>
+        <!-- my profile-->
+        <section class="myprofile">
+            <div class="container"><ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">بياناتي الشخصيه</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ads-tab" data-bs-toggle="tab" data-bs-target="#ads" type="button" role="tab" aria-controls="ads" aria-selected="false">إعلانات قيد المراجعة</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="wish-tab" data-bs-toggle="tab" data-bs-target="#wish" type="button" role="tab" aria-controls="wish" aria-selected="false">إعلانات منشورة</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="wish-tab" data-bs-toggle="tab" data-bs-target="#wish-ads" type="button" role="tab" aria-controls="wish" aria-selected="false">المفضلة</button>
+                    </li>
+                </ul>
+                <div class="tab-content mt_3" id="myTabContent">
+                    <div class="tab-pane fade show active m-auto m-width-600" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <form method="post" action="{{ function('get_permalink', function('get_page_by_path', 'profile')) }}" enctype="multipart/form-data">
+
+                        <div class="d-flex align-items-center flex-wrap">
+                            <div class="border br p_1 text-center width-160 addPhoto flex-fill"> <img class="w-100 br" id="userImag" src="{{ function('wp_get_attachment_url',user_data.user_profile_pic) }}">
+
+                                <div class="file mt_1">
+                                    <input id="_imageRender" type="file" name="user_profile_pic">
+                                    <label>اضف صورة شخصية</label>
+                                </div>
+                            </div>
+                            <div class="mr_1 flex-fill">
+                                <p class="text-lightgray"><strong class="me-2">الاســم :</strong>{{ user_data.user_name }}</p>
+                                <p class="text-lightgray"><strong class="me-2">البريد الالكتروني :</strong>{{ user_data.user_email }}</p>
+                                <div class="justify-content-between d-flex align-items-center">
+                                    <p class="text-lightgray"><strong class="me-2">نــوع العضويه :</strong><span class="text-success">مجاني</span></p>
+{#                                    <a class="text-red" href="#">تغيير العضويه</a>#}
+                                </div>
+                                <div class="justify-content-between d-flex align-items-center">
+                                    <p class="text-lightgray"><strong class="me-2">رقم الهاتف :</strong>{{ user_data.user_phone_number }}</p>
+{#                                    <a id="addNum" href="#">اضافه رقم اخر </a>#}
+                                </div>
+{#                                <form class="d-none align-items-center" id="addNewNum" action="#">#}
+{#                                    <input class="w-100" type="text" placeholder="اضف الرقم">#}
+{#                                    <button class="red_btn" type="submit">حفـــظ </button>#}
+{#                                </form>#}
+                            </div>
+                        </div>
+{#                        <h3 class="mt_2">تغيير كلمه المرور</h3>#}
+
+{#                            <input class="w-100 mb_1" type="password" placeholder="كلمه المرور القديمه">#}
+{#                            <input class="w-100 mb_1" type="password" placeholder="كلمه المرور الجديده">#}
+{#                            <input class="w-100 mb_1" type="password" placeholder="تأكيد كلمه المرور">#}
+                            <div class="row statistcs-section">
+                                <h3>إحصائيات الإعلانات</h3>
+                                <div class="statistics">
+                                    <div class=" statistics-item">
+                                        <p>إعلانات تم نشرها</p>
+                                        <span>{{ user_posts_count }}</span>
+                                    </div>
+                                    <div class="statistics-item">
+                                        <p>عدد المشاهدات</p>
+                                        <span>{{ views_count }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="red_btn" name="submit-profile" type="submit">حفـــظ </button>
+                    </form>
+                    </div>
+
+                    <div class="tab-pane fade m-auto mw-90" id="ads" role="tabpanel" aria-labelledby="ads-tab">
+                        <div class="products list">
+                           {% for ad in user_draft_ads %}
+
+                               {% include 'partial/ad_box.twig' %}
+
+                           {% endfor %}
+
+                        </div></div>
+                    <div class="tab-pane fade m-auto mw-90" id="wish" role="tabpanel" aria-labelledby="wish-tab">
+                        <div class="products list">
+                            {% for ad in user_published_ads %}
+                                {% include 'partial/ad_box.twig' %}
+                            {% endfor %}
+
+                        </div></div>
+                    <div class="tab-pane fade m-auto mw-90" id="wish-ads" role="tabpanel" aria-labelledby="wish-tab">
+                        <div class="products list">
+                            {% for ad in user_favourite_ads %}
+                                {% include 'partial/ad_box.twig' %}
+                            {% endfor %}
+
+                        </div></div>
+
+                </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

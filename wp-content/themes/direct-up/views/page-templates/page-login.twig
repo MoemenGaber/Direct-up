@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <main class="site_main">
+        <div class="top_bar text-center ptb_2">
+            <h1 class="mt-0 mb-0">تــسجيل الدخــول</h1>
+        </div>
+        <section>
+            <div class="login_form">
+                <div class="container">
+                    <div class="m-width-500 m-auto">
+                        <form action="{{login_page}}" method="post">
+                                {{error}}
+                            <input class="mb-3 w-100" name="user-name" id="user-name" type="text" placeholder="اســـم المستخدم">
+                            <input class="mb-1 w-100" type="password" name="password" id="password" placeholder="الرقـــم السري">
+                            <input type="submit" name="submit" value="تسجيل الدخول" class="red_btn w-100 mt_2"/>
+                            <input type="hidden" name="action" value="log-in" />
+                        </form>
+                        <div class="d-flex align-items-center justify-content-between">
+{#                            <a class="text-decoration-underline text-tc d-block mt_1" href="#"> <small>نسيت الرقـــم السري</small></a>#}
+                            <a class="text-red" href="{{ register }}">انشــــاء حســــاب جديد</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

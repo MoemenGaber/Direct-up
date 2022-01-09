@@ -1,0 +1,257 @@
+<div class="ad-type-car">
+    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'thank-you')) }}" enctype="multipart/form-data">
+        <div style="display: none" class="sec_tit">
+            <h2>اختر القسم</h2>
+        </div>
+        <div style="display: none" class="plr_2 bg-light br ptb_1 mt_3 mw-80 m-auto">
+            <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat1" value="">
+            <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat2" value="">
+            <input type="text" class="final_parent_cat" name="final_parent_cat" value="" hidden>
+            <input type="text" class="final_sub_cat" name="final_sub_cat" value="" hidden>
+
+        </div>
+        <button style="display: none" class="chooseDepart ms-2 bg-transparent p-0 border-0 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#departmentModel">اختر القسم                            </button><a class="changeDepart ms-2" href="#"> </a>
+        <hr class="mtb_3">
+
+        <div class="all-ad-info d-none" id="cat-{{ 'cars'|get_category_id }}">
+            <div class="sec_tit"> <span>1</span>
+                <h2>تفاصيل الاعلان</h2>
+            </div>
+            <div class="row mt_3">
+                <div class="col-md-6">
+                    <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
+                        <label class="text-tc" for="#model">ادخل النوع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <select name="car-type" id="model">
+                            <option value="" disabled>ادخل النوع</option>
+                            <option value="هيونداي">هيونداي</option>
+                            <option value="تويوتا">تويوتا</option>
+                            <option value="فورد">فورد</option>
+                            <option value="شيفروليه">شيفروليه</option>
+                            <option value="نيسان">نيسان</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                         <input type="text" name="car-model" value="" class="w-100 mtb_1" placeholder="اختر الفئة">
+                </div>
+                <div class="col-md-6">
+                    <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
+                        <label class="text-tc" for="#year"> سنه الصنع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <select name="car-year" id="year">
+                            <option value="" disabled> سنه الصنع</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <h3 class="ml_1 font-bold">الحاله :</h3>
+                    <div class="radioBtn ml_1">
+                        <input type="radio" name="car-status" value="new">
+                        <label>جديد</label>
+                    </div>
+                    <div class="radioBtn">
+                        <input type="radio" name="car-status" value="used">
+                        <label>مستعمل</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
+                        <label class="text-tc" for="#km"> الكيلو مترات</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <select id="km" name="car-kilometers" required>
+                            <option value="" disabled> الكيلو مترات </option>
+                            <option value="اقل من 50000">اقل من 50000</option>
+                            <option value="اقل من 100000">اقل من 100000</option>
+                            <option value="اقل من 150000">اقل من 150000</option>
+                            <option value="اقل من 200000">اقل من 200000</option>
+                            <option value="اكثر من 200000">اكثر من 200000</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <h3 class="ml_1 font-bold">نوع ناقل الحركه :</h3>
+                    <div class="radioBtn ml_1">
+                        <input type="radio" name="car-gear" value="auto">
+                        <label>اوتوماتك</label>
+                    </div>
+                    <div class="radioBtn">
+                        <input type="radio" name="car-gear" value="manual">
+                        <label>يدوي</label>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <h3 class="ml_1 font-bold">نوع الوقود </h3>
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="car-petrol-type" value="بنزين">
+                            <label>بنزين</label>
+                        </div>
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="car-petrol-type" value="ديزل">
+                            <label>ديزل</label>
+                        </div>
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="car-petrol-type" value="هايبرد">
+                            <label>هايبرد</label>
+                        </div>
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="car-petrol-type" value="كهربائي">
+                            <label>كهربائي</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <h3 class="ml_1 font-bold">الاضافات </h3>
+                    <select name="car-addons[]" class="multi-select" multiple>
+                        <option value="قفل مركزي للأبواب">قفل مركزي للابواب</option>
+                        <option value="فتحة سقف">فتحه سقف</option>
+                        <option value="وسائل أمان مختلفة">وسائل امان مختلفة</option>
+                    </select>
+                </div>
+    {#            <div class="col-sm-12 mb-2">#}
+    {#                <h3 class="ml_1 font-bold">اللون</h3>#}
+    {#                <div class="d-flex align-items-center flex-wrap">#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#f5f5dc"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#000000"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#2a5c96"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#964b00"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#008000"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#808080"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#800000"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#f39c12"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#ffc0cb"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#800080"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#ff0000"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#c0c0c0"></label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#40e0d0"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#ffffff"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#ff0"> </label>#}
+    {#                    </div>#}
+    {#                    <div class="radioBtn ml_1 mb-2">#}
+    {#                        <input type="radio" name="color">#}
+    {#                        <label class="color width-40 height-40 br" style="background-color:#d4af37"> </label>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+                <div class="col-sm-12 mb-2">
+                    <h3 class="ml_1 font-bold">طريقه الدفع</h3>
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="car-payment" value="كاش">
+                            <label>كاش</label>
+                        </div>
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="car-payment" value="تقسيط">
+                            <label>نقسيط</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (نيسان جوك 2017)">
+                </div>
+                <div class="col-sm-12">
+                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان"></textarea>
+                </div>
+                <div class="col-md-6 position-relative">
+                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required>
+                    <label class="currancy" for="">ريال سعودي</label>
+                </div>
+                <div class="col-md-6 position-relative">
+                    <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
+                        <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <select id="city" name="ad-city">
+                            <option value="" disabled>اختر المدينة او الحي</option>
+                            <option value="الرياض">الرياض</option>
+                            <option value="جدة">جدة</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr class="mtb_3">
+            <div class="sec_tit"> <span>2</span>
+                <h2>اضف الصور</h2>
+            </div>
+            <div class="row mt_3 align-items-center">
+                <div class="cpl-sm-12 col-md-6 col-lg-5">
+                    <div class="border br p_3 text-center"> <img class="w-40" src="{{ theme.link }}/assets/img/camera.svg" alt="pic">
+                        <div class="file mt_2">
+                            <input name="images-gallery[]" type="file" multiple>
+                            <label class="red_btn">اضف صورة رئيسية</label>
+                            <h3 class="font-bold text-success numberOfImages d-none"> </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7">
+                    <p class="font-bold">اضافة صورة لاعلانك تعني مشاهدات اكثر</p>
+                    <p>اضف صور حقيقيه للمنتج</p>
+                    <p class="text-red">يمكنك رفع حتي 20 صورة</p>
+                </div>
+            </div>
+            <hr class="mtb_3">
+            <div class="sec_tit"> <span>3</span>
+                <h2>معلومات الاتصال</h2>
+            </div>
+            <div class="mt_3">
+                <h3 class="d-inline">الاسم :</h3>
+                <p class="d-inline font-bold">{{ user_name }}</p>
+            </div>
+            <div>
+                <h3 class="d-inline"> رقم التليفون :</h3>
+                <p class="d-inline font-bold">{{ user_phone }}</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt_3 flex-wrap">
+                <button class="red_btn" id="submit" name="submit" type="submit">نشــر الاعـــلان</button>
+                <p>بنشر اعلانك انت موافق علي
+                    <button class="bg-transparent p-0 border-0 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">الشروط و الاحكام </button>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

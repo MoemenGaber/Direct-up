@@ -1,0 +1,59 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<main class="site_main">
+		<div class="top_bar text-center ptb_2">
+			<h1 class="mt-0 mb-0">{{ post.post_title }}</h1><nav aria-label="breadcrumb">
+			</nav>
+		</div>
+		<section class="single-ad">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="owl-carousel" id="ad_slider" data-slider-id="1">
+							{% for image in ad_details.images_gallery %}
+								<img class="pointer" src="{{ fn('wp_get_attachment_url',image) }}" alt="{{ image }}">
+							{% endfor %}
+						</div>
+						<div class="owl-thumbs" data-slider-id="1">
+						</div>
+						<hr class="mtb_1">
+						<div class="mobile_view">
+							<div class="_price" style="direction:ltr"><span class="text-red ms-2 font-bold" style="font-size:1.5rem">{{ ad_details.ad_price }}</span><span class="text-white width-40 height-40 d-inline-flex align-items-center justify-content-center ps-2" style="background: url({{theme.link}}/assets/img/bg.svg) no-repeat center;background-size: contain;font-size:1.5rem">
+                     SR </span></div>
+							<div> <a class="add_to_wish added g_br_btn ml_1 p-0 width-40 height-40 rounded-circle d-inline-flex align-items-center justify-content-center" href="#">
+									<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#B7BCCA"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg></a><a class="g_br_btn ml_1 p-0 width-40 height-40 rounded-circle d-inline-flex align-items-center justify-content-center" href="#"> <img class="width-20" src="{{theme.link}}/assets/img/phonel.svg" alt="pic"></a></div>
+						</div>
+						<h3 class="font-bold">خدمات الشركة :</h3>
+						<p>{{ post.services_description}} </p>
+						<div class="bg-light br p_1 d-flex justify-content-between align-items-center">
+							<div class="r_br_btn"><img class="me-2 width-20 vm" src="{{theme.link}}/assets/img/share.svg" alt="pic">شارك </div>
+							{{ fn('do_shortcode','[DISPLAY_ULTIMATE_SOCIAL_ICONS]') }}
+						</div>
+
+					</div>
+					<aside class="col-lg-4">
+						<div class="bg-light br pt_1 plr_2 pb_2">
+							<div class="d-flex justify-content-between align-items-center flex-wrap d-mobile-none">
+
+							</div>
+							<div class="d-flex align-items-center mt_2"> <img class="rounded-circle width-60 height-60" src="{{theme.link}}/assets/img/profile.png" alt="pic">
+								<div class="personal_info mr_1">
+									<p class="mt-0 mb-0">{{ post.company_name }}</p>
+								</div>
+							</div>
+							<div class="d-flex align-items-center mt_2 justify-content-between">
+								<a class="whit_btn flex-fill text-center me-2" href="tel:{{ post.contact_number }}">اتصل الان </a>
+{#								<a class="red_btn flex-fill text-center ms-2" href="#">ابدأ الدردشه</a>#}
+							</div>
+							<hr class="mtb_2">
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+{% endblock %}

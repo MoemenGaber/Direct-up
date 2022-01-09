@@ -1,0 +1,99 @@
+<div class="ad-type-car">
+    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'thank-you')) }}" enctype="multipart/form-data">
+        <div style="display: none" class="sec_tit">
+            <h2>اختر القسم</h2>
+        </div>
+        <div style="display: none" class="plr_2 bg-light br ptb_1 mt_3 mw-80 m-auto">
+            <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat1" value="">
+            <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat2" value="">
+            <input type="text" class="final_parent_cat" name="final_parent_cat" value="" hidden>
+            <input type="text" class="final_sub_cat" name="final_sub_cat" value="" hidden>
+
+        </div>
+        <button style="display: none" class="chooseDepart ms-2 bg-transparent p-0 border-0 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#departmentModel">اختر القسم                            </button><a class="changeDepart ms-2" href="#"> </a>
+        <div class="all-ad-info d-none" id="cat-{{ 'equipment'|get_category_id }}">
+            <div class="sec_tit"> <span>1</span>
+                <h2>تفاصيل الاعلان</h2>
+            </div>
+            <div class="row mt_3">
+                <div class="col-md-6">
+                    <input name="equ-type" class="w-100 mtb_1" type="text" placeholder="النوع">
+                </div>
+                <div class="col-md-6">
+                    <input name="equ-storage" class="w-100 mtb_1" type="text" placeholder="مساحة التخزين (إن وجدت)">
+                </div>
+                <div class="col-sm-12 mb-2">
+                    <h3 class="ml_1 font-bold">طريقه الدفع</h3>
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="equ-payment-type" value="كاش">
+                            <label>كاش</label>
+                        </div>
+                        <div class="radioBtn ml_1 mb-2">
+                            <input type="radio" name="equ-payment-type" value="تقسيط">
+                            <label>نقسيط</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (موبايل سامسونج A70 بحالة جيدة للبيع)">
+                </div>
+                <div class="col-sm-12">
+                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان"></textarea>
+                </div>
+                <div class="col-md-6 position-relative">
+                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required>
+                    <label class="currancy" for="">ريال سعودي</label>
+                </div>
+                <div class="col-md-6 position-relative">
+                    <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
+                        <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <select id="city" name="ad-city">
+                            <option value="" disabled>اختر المدينة او الحي</option>
+                            <option value="الرياض">الرياض</option>
+                            <option value="جدة">جدة</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr class="mtb_3">
+            <div class="sec_tit"> <span>2</span>
+                <h2>اضف الصور</h2>
+            </div>
+            <div class="row mt_3 align-items-center">
+                <div class="cpl-sm-12 col-md-6 col-lg-5">
+                    <div class="border br p_3 text-center"> <img class="w-40" src="{{ theme.link }}/assets/img/camera.svg" alt="pic">
+                        <div class="file mt_2">
+                            <input name="images-gallery[]" type="file" multiple>
+                            <label class="red_btn">اضف صورة رئيسية</label>
+                            <h3 class="font-bold text-success numberOfImages d-none"> </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-7">
+                    <p class="font-bold">اضافة صورة لاعلانك تعني مشاهدات اكثر</p>
+                    <p>اضف صور حقيقيه للمنتج</p>
+                    <p class="text-red">يمكنك رفع حتي 20 صورة</p>
+                </div>
+            </div>
+            <hr class="mtb_3">
+            <div class="sec_tit"> <span>3</span>
+                <h2>معلومات الاتصال</h2>
+            </div>
+            <div class="mt_3">
+                <h3 class="d-inline">الاسم :</h3>
+                <p class="d-inline font-bold">{{ user_name }}</p>
+            </div>
+            <div>
+                <h3 class="d-inline"> رقم التليفون :</h3>
+                <p class="d-inline font-bold">{{ user_phone }}</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt_3 flex-wrap">
+                <button class="red_btn" id="submit" name="submit" type="submit">نشــر الاعـــلان</button>
+                <p>بنشر اعلانك انت موافق علي
+                    <button class="bg-transparent p-0 border-0 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">الشروط و الاحكام </button>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

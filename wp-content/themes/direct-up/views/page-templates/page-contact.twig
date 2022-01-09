@@ -1,0 +1,63 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <main class="site_main">
+        <div class="top_bar text-center ptb_2">
+            <h1 class="mt-0 mb-0">تواصل معنا</h1>
+        </div>
+        <section class="contact-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-8">
+                        {{ fn('do_shortcode','[contact-form-7 id="227" title="Contact form 1"]') }}
+                    </div>
+                    <aside class="col-md-5 col-lg-4">
+                        <div class="bg-light br pt_1 plr_2 pb_2">
+                            <h3>  و يمكنك ايضا التواصل عبر :</h3>
+                            <hr class="mtb_2">
+                            <p> <img class="vm me-2" src="{{theme.link}}/assets/img/email.png" alt="email"><a class="text-tc" href="mailTo:info@direct-up.com">info@direct-up.com</a></p>
+{#                            <p> <img class="vm me-2" src="{{theme.link}}/assets/img/smartphone.png" alt="phone">#}
+{#                                <a class="text-tc" href="tel:01200033300  ">01200033300  </a></p>#}
+                            <div class="d-flex align-items-center mt_2">    <a class="ms-3" href="#"><img class="width-40" src="{{theme.link}}/assets/img/whatsapp.png" alt="whatsApp"></a><a class="ms-3" href="#"><img class="width-40" src="{{theme.link}}/assets/img/twitter.png" alt="twitter"></a><a class="ms-3" href="#"><img class="width-40" src="{{theme.link}}/assets/img/instagram.png" alt="instagram"></a><a class="ms-3" href="#"><img class="width-40" src="{{theme.link}}/assets/img/facebook.png" alt="facebook"></a></div>
+                        </div>
+                    </aside>
+                </div>
+                <hr class="mtb_2">
+{#                <h2 class="font-bold">الاسئله الاكثر شيوعا</h2><div class="accordion mt_2 bg-light br" id="accordionExample">#}
+{#                    <div class="accordion-item">#}
+{#                        <h2 class="accordion-header" id="headingOne">#}
+{#                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">#}
+{#                                <Accordion>ما سبب رفض إعلاني؟</Accordion></button>#}
+{#                        </h2>#}
+{#                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">#}
+{#                            <div class="accordion-body">#}
+{#                                <p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p></div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="accordion-item">#}
+{#                        <h2 class="accordion-header" id="headingTwo">#}
+{#                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">#}
+{#                                <Accordion>ما سبب رفض إعلاني؟</Accordion></button>#}
+{#                        </h2>#}
+{#                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">#}
+{#                            <div class="accordion-body">#}
+{#                                <p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p></div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="accordion-item">#}
+{#                        <h2 class="accordion-header" id="headingThree">#}
+{#                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">#}
+{#                                <Accordion>ما سبب رفض إعلاني؟</Accordion></button>#}
+{#                        </h2>#}
+{#                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">#}
+{#                            <div class="accordion-body">#}
+{#                                <p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p></div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,288 @@
+/* ====== fonts =========== */
+
+@font-face {
+	font-family: 'Conv_Quicksand-Bold';
+	src: url('../fonts/font/Quicksand-Bold.eot');
+	src: local('☺'), url('../fonts/font/Quicksand-Bold.woff') format('woff'), url('../fonts/font/Quicksand-Bold.ttf') format('truetype'), url('../fonts/font/Quicksand-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_Quicksand-Medium';
+	src: url('../fonts/font/Quicksand-Medium.eot');
+	src: local('☺'), url('../fonts/font/Quicksand-Medium.woff') format('woff'), url('../fonts/font/Quicksand-Medium.ttf') format('truetype'), url('../fonts/font/Quicksand-Medium.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_Quicksand-Regular';
+	src: url('../fonts/font/Quicksand-Regular.eot');
+	src: local('☺'), url('../fonts/font/Quicksand-Regular.woff') format('woff'), url('../fonts/font/Quicksand-Regular.ttf') format('truetype'), url('../fonts/font/Quicksand-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+/* ====== Color Palette =========== */
+
+
+$purpcol:#23033C;// purple color
+$ylwcol:#F6C667;//yellow color
+$tc: #fff;  //text color
+$bc: #000;  //basic color
+$facebook: #3b5998;
+$twitter: #55acee;
+$instagram: #e1306c;
+$googleplus: #dc4e41;
+$youtube: #cd201f;
+$linkedin: #0077b5;
+$behance: #1769ff;
+$pintrest: #bd081c;
+
+/* ====== fonts =========== */
+
+$font-family-regular: 'Conv_Quicksand-Regular';
+$font-family-medium: 'Conv_Quicksand-Medium';
+$font-family-bold: 'Conv_Quicksand-Bold';
+
+
+/* ====== Font Sizes =========== */
+
+$base-font-size: 15px;
+$font-small: 1.2rem;
+$font-big: 1.5rem;
+$font-extra-big: 2rem;
+
+/* ====== Text =========== */
+
+$base-line-height: 24px;
+$letter-space: 1px;
+
+/* ====== padding =========== */
+
+$padding-one: 3rem;
+$padding-two: 2rem;
+$padding-three: 1rem;
+
+/* ====== margin =========== */
+
+$margin-one: 3rem;
+$margin-two: 2rem;
+$margin-three: 1rem;
+
+/* ====== border radius =========== */
+
+$br: 5px;
+
+ /*----------- functions -----------*/
+
+ @mixin scale($a,$b) { // scale animation
+   -webkit-transform: scale($a,$b);
+   -moz-transform: scale($a,$b);
+   -o-transform: scale($a,$b);
+      transform: scale($a,$b);
+ }
+ @mixin tform($a,$b) { // translate animation
+   -webkit-transform: translate($a,$b);
+   -moz-transform: translate($a,$b);
+   -o-transform: translate($a,$b);
+      transform: translate($a,$b);
+ }
+ @mixin rotatex($a) { // rotatex animation
+   -webkit-transform: rotateX($a);
+   -moz-transform: rotateX($a);
+   -o-transform: rotateX($a);
+      transform: rotateX($a);
+ }
+ @mixin rotatey($a) { // rotatey animation
+   -webkit-transform: rotateY($a);
+   -moz-transform: rotateY($a);
+   -o-transform: rotateY($a);
+      transform: rotateY($a);
+ }
+ @mixin trans($a) { // transition
+   -webkit-transition: all $a ease-in-out;
+   -moz-transition: all $a ease-in-out;
+   -o-transition: all $a ease-in-out;
+      transition: all $a ease-in-out;
+ }
+ @mixin skew($a,$b) { // skew animate
+   -webkit-transform: skew($a,$b);
+   -moz-transform: skew($a,$b);
+   -o-transform: skew($a,$b);
+      transform: skew($a,$b);
+ }
+ @mixin manimate($a,$b,$c,$d,$e,$f,$g,$h) {
+   -webkit-transform: rotatex($a) rotatey($b) translate($c,$d)  scale($e,$f) skew($g,$h);
+   -moz-transform: rotatex($a) rotatey($b) translate($c,$d)  scale($e,$f) skew($g,$h);
+   -o-transform: rotatex($a) rotatey($b) translate($c,$d)  scale($e,$f) skew($g,$h);
+      transform: rotatex($a) rotatey($b) translate($c,$d)  scale($e,$f) skew($g,$h);
+ }
+ /*---------- animation ----------*/
+
+/* --------------------------------
+RESET CSS
+-------------------------------- */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+strike,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
+  display: block;
+}
+ul,
+li {
+  list-style: none;
+}
+select { width: 100%; }
+input:focus,button:focus,textarea:focus { outline: 0; }
+a{
+  &:hover{
+    color: $tc;
+    text-decoration: none;
+  }
+}
+button{
+  padding: .5rem 2rem;
+  cursor: pointer;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 15px;
+  font-size: $base-font-size;
+}
+body {
+  line-height: ($base-line-height/$base-font-size);
+  font-family: $font-family-medium;
+  overflow-x: hidden;
+}
+input{
+  height: 42px;
+  padding: 0 1rem;
+}
+textarea{
+  resize: none;
+  padding: .5rem $padding-three;
+  height: 84px;
+}
+p,h1,h2,h3,form{
+  margin:$margin-three 0px;
+}
+h1{
+  font-size: 40px;
+  font-size: $font_extra_big;
+  font-family: $font-family-bold;
+}
+h2{
+  font-size: 30px;
+  font-size: $font_big;
+  font-family: $font-family-bold;
+}
+h3{
+  font-size: 25px;
+  font-size: $font_small;
+  font-family: $font-family-regular;
+}
+section{
+  padding: 5rem 0;
+}

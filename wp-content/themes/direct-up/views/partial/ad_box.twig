@@ -1,0 +1,39 @@
+<div class="product bg-light br">
+    {%  if ad.custom.up_ad %}
+        <div class="up_icon"><img class="width-60" src="{{theme.link}}/assets/img/up.svg" alt="icon"></div>
+    {%  endif %}
+    <div class="main_data">
+        <div class="_img">
+            <p class="red_btn top_price dn-mobile">{{ ad.ad_price|price_filter }}</p><img class="br" src="{{ ad.post_ID|get_ad_thumb }}" alt="car">
+        </div>
+        <div class="info">
+            <div>
+                <a href="{{ fn('get_permalink',ad.post_ID) }}">
+                    <h3 class="text-red font-bold"> {{ ad.post_title }}</h3></a>
+                    <p>{{ ad.ad_description|truncate(14) }}</p>
+                <div class="d-flex border-bottom flex-wrap">
+                    <p class="text-lightgray ml_1"><img class="me-2 vm" src="{{theme.link}}/assets/img/location.svg" alt="location">{{ ad.custom.ad_city }}</p>
+{#                    <p class="text-lightgray"><img class="me-2 vm" src="{{theme.link}}/assets/img/user.svg" alt="location" style="width:15px">{{ user_data.user_name }}</p>#}
+                </div>
+                <div class="d-flex mt_1 btns align-items-center dn-mobile">
+                    {% if user %}
+                        {{ ad.ID|get_favorite_btn(user_data.ID) }}
+                    {% endif %}
+                    <a class="call r_br_btn ml_1" href="tel:{{ ad.contact_number }}"> <small>اتصل</small></a>
+                    {% if ad.whatsapp_number %}
+{#                        <a class="whats" href="#"> <img src="{{theme.link}}/assets/img/whats.svg" alt="whats"></a>#}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dn-pc mt_1 btns align-items-center justify-content-between border-top pt-3">
+        <div class="_price" style="direction:ltr">
+            <span class="text-red ms-2 font-bold" style="font-size:1.5rem">{{ ad.ad_price }}</span>
+            <span class="text-white width-40 height-40 d-inline-flex align-items-center justify-content-center ps-2" style="background: url({{theme.link}}/assets/img/bg.svg) no-repeat center;background-size: contain;font-size:1.5rem">
+                     SR </span></div>
+        <div class="d-inline-flex"><a class="add_to_wish added g_br_btn ml_1 p-0 width-40 height-40 rounded-circle d-flex align-items-center justify-content-center" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#B7BCCA"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg></a><a class="g_br_btn ml_1 p-0 width-40 height-40 rounded-circle d-flex align-items-center justify-content-center" href="#"> <img class="width-20" src="{{theme.link}}/assets/img/phonel.svg" alt="pic"></a><a href="#"> <img class="width-40" src="{{theme.link}}/assets/img/whatsapp.png" alt="pic"></a></div>
+    </div>
+    {#                                    <a class="mt_2 d-block" href="#">تعديل الاعلان </a>#}
+</div>

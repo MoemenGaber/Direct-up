@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<main class="site_main">
+      <div class="top_bar text-center ptb_2">
+        <h1 class="mt-0 mb-0">عن الموقع</h1>
+      </div>
+      <section class="about-us"> 
+        <div class="container"> 
+            {{about_it_arm}}
+          <hr class="mtb_2">
+        </div>
+  
+        <div class="container"> 
+          <h2 class="d-inline-block section_tit sec_tit">من نحن<span>3</span></h2>
+         {{about_directup}}
+        </div>
+      </section>
+    </main>
+
+{% endblock %}

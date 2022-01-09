@@ -1,0 +1,30 @@
+name: directup
+recipe: wordpress
+config:
+  php: '7.4'
+  via: nginx
+  database: mysql:5.7
+  xdebug: true
+
+services:
+  node:
+    type: node:14
+    globals:
+      gulp-cli: latest
+
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+
+  gulp:
+    service: node
+
+  yarn:
+    service: node
+
+tooling:
+  frontend:
+    description: This build your frontend assets, and starts a gulp watcher for the theme
+    cmd:
+      - node: sh /app/.scripts/frontend.sh

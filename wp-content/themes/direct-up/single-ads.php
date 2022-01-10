@@ -23,6 +23,8 @@ if(has_term('cars','ad_categories',$timber_post)){
     $context['ad_type'] = 'akar';
 }elseif (has_term('equipment','ad_categories',$timber_post)){
     $context['ad_type'] = 'equipment';
+}elseif(has_term('mobile','ad_categories',$timber_post)){
+    $context['ad_type']='mobile';
 }
 if($context['ad_type'] == 'cars'){
     $ad_description=get_field('ad_description',$timber_post->ID);
@@ -101,6 +103,8 @@ $post_id = get_the_ID();
 $count = (int) get_post_meta( $post_id, $key, true );
 $count++;
 update_post_meta( $post_id, $key, $count );
+
+$context['views_count']=get_post_meta(get_the_ID(),'ads_views_count',true);
 
 $context['ad_details']=$ad_details;
 

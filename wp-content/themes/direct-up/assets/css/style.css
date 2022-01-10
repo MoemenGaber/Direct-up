@@ -2984,3 +2984,9 @@ font-weight: bolder;
 .width-50{
   width: 50px;
 }
+.addPhoto{
+  min-height: 180px;
+}
+.addPhoto .file{
+  margin-top: 2.5rem !important;
+}

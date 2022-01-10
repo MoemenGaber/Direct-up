@@ -98,7 +98,7 @@
                         {% for featured_post in features_ads_posts %}
                         <div class="item bg-white br p_1 mt_2">
                             <div class="up_icon mb_1" style="margin-top:-1.8rem">
-                                <img class="width-60" src="{{ theme.link }}/assets/img/up.svg" alt="icon">
+                                <a href="{{ featured_post.post_link }}"><img class="width-60" src="{{ theme.link }}/assets/img/up.svg" alt="icon"></a>
                             </div>
                             <div class="_img height-140 overflow-hidden br d-flex justify-content-center align-items-center">
                                 <img class="height-140 w-auto" src="{{ featured_post.thumbnail.src }}" alt="pic">

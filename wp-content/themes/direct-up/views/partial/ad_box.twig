@@ -4,14 +4,15 @@
     {%  endif %}
     <div class="main_data">
         <div class="_img">
-            <p class="red_btn top_price dn-mobile">{{ ad.ad_price|price_filter }}</p><img class="br" src="{{ ad.post_ID|get_ad_thumb }}" alt="car">
+            <p class="red_btn top_price dn-mobile">{{ ad.ad_price|price_filter }}</p>
+            <a href="{{ ad.link }}"><img class="br" src="{{ ad.post_ID|get_ad_thumb }}" alt="car"></a>
         </div>
         <div class="info">
             <div>
                 <a href="{{ fn('get_permalink',ad.post_ID) }}">
                     <h3 class="text-red font-bold"> {{ ad.post_title }}</h3></a>
                     <p>{{ ad.ad_description|truncate(14) }}</p>
-                <div class="d-flex border-bottom flex-wrap">
+                <div class="d-flex border-bottom flex-wrap" style="width: 300px;">
                     <p class="text-lightgray ml_1"><img class="me-2 vm" src="{{theme.link}}/assets/img/location.svg" alt="location">{{ ad.custom.ad_city }}</p>
 {#                    <p class="text-lightgray"><img class="me-2 vm" src="{{theme.link}}/assets/img/user.svg" alt="location" style="width:15px">{{ user_data.user_name }}</p>#}
                 </div>

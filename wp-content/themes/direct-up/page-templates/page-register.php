@@ -64,6 +64,19 @@ if(isset($_POST['submit-registered-user'])){
     $id=wp_insert_user($user_data);
     update_user_meta($id,'user_phone',$user_phone);
     wp_update_user( array ('ID' => $id, 'role' => 'subscriber') ) ;
+
+    $creds = array(
+        'user_login'    => $username,
+        'user_password' => $user_pass,
+        'remember'      => true
+    );
+
+    $user = wp_signon( $creds, is_ssl() );
+
+    if ( is_wp_error( $user ) ) {
+        echo $user->get_error_message();
+}
+
     wp_safe_redirect(get_home_url().'/user-registered'.'?registered=success');
 
 }

@@ -52,7 +52,11 @@ function upload_images_to_ad($post_id){
     }
 }
 
-
+add_action( 'wp_logout','wpdocs_ahir_redirect_after_logout' );
+function wpdocs_ahir_redirect_after_logout() {
+    wp_safe_redirect( home_url() );
+    exit();
+}
 
 // Login
 

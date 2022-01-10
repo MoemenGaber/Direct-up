@@ -12,6 +12,9 @@ if ( $registered_user === "success" ) {
     Timber::render( $templates, $context );
 
     $login_page=get_permalink(get_page_by_path('login'));
+    $homepage=get_home_url();
+    header( "refresh:3;url=$homepage" );
+
 
 }else{
     wp_safe_redirect(get_home_url());

@@ -17,6 +17,7 @@ $context['ad_categories'] = $ad_categories;
     $context['user_name']=$user_name;
     $user_phone_number = get_user_meta( $user->data->ID, 'user_phone', true);
     $context['user_phone']= $user_phone_number;
+    $context['ad_cities_options']=get_field('ad_cities','options');
     Timber::render( $templates, $context );
 }else{
     $login_page=get_permalink(get_page_by_path('login'));

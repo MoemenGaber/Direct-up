@@ -41,7 +41,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">الشروط و الاحكام </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" id="modal-new-ad-close-x" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -50,7 +50,7 @@
                                     <ul class="cat_popup" id="choose-ad-cat">
                                         {% for cat in ad_categories %}
                                             {% if cat.parent == 0 %}
-                                        <li data-cat-id="{{ cat.term_id }}" class="border-bottom ptb_1" data="{{ cat.name }}"> <img class="me-2 vm" src="{{ cat.term_id|get_term_icon }}" alt="icon">{{ cat.name }}</li>
+                                        <li data-cat-id="{{ cat.term_id }}" class="border-bottom ptb_1" data="{{ cat.name }}"> <img data-cat-id="{{ cat.term_id }}" class="me-2 vm"  src="{{ cat.term_id|get_term_icon }}" alt="icon">{{ cat.name }}</li>
                                             {% endif %}
                                         {% endfor %}
 
@@ -62,7 +62,7 @@
                                 </div>
                             </div></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                            <button type="button" class="btn btn-secondary" id="modal-new-ad-close" data-bs-dismiss="modal">اغلاق</button>
                         </div>
                     </div>
                 </div>

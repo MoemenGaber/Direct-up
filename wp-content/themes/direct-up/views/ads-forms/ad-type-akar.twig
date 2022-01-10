@@ -57,9 +57,10 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
-                            <option value="" disabled>اختر المدينة او الحي</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
+                            <option value="" selected disabled>اختر المدينة او الحي</option>
+                            {% for city in ad_cities_options %}
+                                <option value="{{ city.city }}">{{ city.city }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

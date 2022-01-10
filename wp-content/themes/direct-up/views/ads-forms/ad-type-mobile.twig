@@ -18,7 +18,7 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#model">ادخل النوع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="mobile-type" id="model">
-                            <option value="" disabled>ادخل البراند</option>
+                            <option value="" selected disabled>ادخل البراند</option>
                             <option value="أبل">أبل</option>
                             <option value="سامسونج">سامسونج</option>
                             <option value="هواوي">هواوي</option>
@@ -35,7 +35,7 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#year"> سنه الصنع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="mobile-year" id="year">
-                            <option value="" disabled> سنه الصنع</option>
+                            <option value="" selected disabled> سنه الصنع</option>
                             <option value="2021">2021</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
@@ -59,7 +59,7 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#km"> سعة التخزين</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="km" name="mobile-storage" required>
-                            <option value="" disabled> سعة تخزين الجهاز </option>
+                            <option value="" selected disabled> سعة تخزين الجهاز </option>
                             <option value="16GB">16GB</option>
                             <option value="32GB">32GB</option>
                             <option value="128GB">128GB</option>
@@ -99,9 +99,10 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
-                            <option value="" disabled>اختر المدينة او الحي</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
+                            <option value="" selected disabled>اختر المدينة او الحي</option>
+                            {% for city in ad_cities_options %}
+                                <option value="{{ city.city }}">{{ city.city }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

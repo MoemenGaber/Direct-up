@@ -7,6 +7,18 @@ class CustomScripts {
         if(chooseDepart){
             document.querySelector('.chooseDepart').click();
         }
+        this._refreshPageWhenCloseModal();
+    }
+
+    _refreshPageWhenCloseModal(){
+        const closeNewAdModal= document.querySelector('#modal-new-ad-close');
+        const closeNewAdModalX= document.querySelector('#modal-new-ad-close-x');
+        closeNewAdModal.addEventListener('click',function (e) {
+            location.replace('http://direct-up.com/');
+        });
+        closeNewAdModalX.addEventListener('click',function (e) {
+            location.replace('http://direct-up.com/');
+        });
     }
 
 

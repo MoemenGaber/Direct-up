@@ -20,12 +20,13 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#model">ادخل النوع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="car-type" id="model">
-                            <option value="" disabled>ادخل النوع</option>
+                            <option value="" selected disabled>ادخل النوع</option>
                             <option value="هيونداي">هيونداي</option>
                             <option value="تويوتا">تويوتا</option>
                             <option value="فورد">فورد</option>
                             <option value="شيفروليه">شيفروليه</option>
                             <option value="نيسان">نيسان</option>
+                            <option value="أخرى">أخرى</option>
                         </select>
                     </div>
                 </div>
@@ -36,7 +37,7 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#year"> سنه الصنع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="car-year" id="year">
-                            <option value="" disabled> سنه الصنع</option>
+                            <option value="" selected disabled> سنه الصنع</option>
                             <option value="2021">2021</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
@@ -60,7 +61,7 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#km"> الكيلو مترات</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="km" name="car-kilometers" required>
-                            <option value="" disabled> الكيلو مترات </option>
+                            <option value="" selected disabled> الكيلو مترات </option>
                             <option value="اقل من 50000">اقل من 50000</option>
                             <option value="اقل من 100000">اقل من 100000</option>
                             <option value="اقل من 150000">اقل من 150000</option>
@@ -205,9 +206,10 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
-                            <option value="" disabled>اختر المدينة او الحي</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
+                            <option value="" selected disabled>اختر المدينة او الحي</option>
+                            {% for city in ad_cities_options %}
+                                <option value="{{ city.city }}">{{ city.city }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

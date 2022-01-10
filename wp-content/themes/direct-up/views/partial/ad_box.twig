@@ -4,7 +4,7 @@
     {%  endif %}
     <div class="main_data">
         <div class="_img">
-            <p class="red_btn top_price dn-mobile">{{ ad.ad_price|price_filter }}</p>
+            <p class="red_btn top_price dn-mobile">{{ ad.ad_price }} SR</p>
             <a href="{{ ad.link }}"><img class="br" src="{{ ad.post_ID|get_ad_thumb }}" alt="car"></a>
         </div>
         <div class="info">
@@ -30,7 +30,7 @@
     </div>
     <div class="dn-pc mt_1 btns align-items-center justify-content-between border-top pt-3">
         <div class="_price" style="direction:ltr">
-            <span class="text-red ms-2 font-bold" style="font-size:1.5rem">{{ ad.ad_price }}</span>
+            <span class="text-red ms-2 font-bold" style="font-size:1.5rem">{{ ad.ad_price }} SR</span>
             <span class="text-white width-40 height-40 d-inline-flex align-items-center justify-content-center ps-2" style="background: url({{theme.link}}/assets/img/bg.svg) no-repeat center;background-size: contain;font-size:1.5rem">
                      SR </span></div>
         <div class="d-inline-flex"><a class="add_to_wish added g_br_btn ml_1 p-0 width-40 height-40 rounded-circle d-flex align-items-center justify-content-center" href="#">

@@ -88,6 +88,7 @@ if($context['ad_type'] == 'cars'){
     $images=get_field('images',$timber_post->ID);
     $ad_details=array(
         'ad_description'=>$ad_description,
+        'ad_price'=>$ad_price,
         'ad_city'=> $akar_city,
         'equipment_type'=>$equipment_type,
         'equipment_storage'=>$equipment_storage,
@@ -96,8 +97,32 @@ if($context['ad_type'] == 'cars'){
         'images_gallery'=>$images,
 
     );
+}elseif($context['ad_type']=='mobile'){
+    $ad_description=get_field('ad_description',$timber_post->ID);
+    $ad_city=get_field('ad_city',$timber_post->ID);
+    $ad_price = get_field('ad_price',$timber_post->ID);
+    $ad_contact_number=get_field('ad_contact_number',$timber_post->ID);
+    $ad_whatsapp_number=get_field('ad_whatsapp_number',$timber_post->ID);
+    $mobile_brand=get_field('mobile_brand',$timber_post->ID);
+    $mobile_model=get_field('mobile_model',$timber_post->ID);
+    $mobile_storage=get_field('mobile_storage',$timber_post->ID);
+    $mobile_color=get_field('mobile_color',$timber_post->ID);
+    $mobile_status=get_field('mobile_status',$timber_post->ID);
+    $images=get_field('images',$timber_post->ID);
+    $ad_details=array(
+        'ad_description'=>$ad_description,
+        'ad_price'=>$ad_price,
+        'ad_whatsapp_number'=>$ad_whatsapp_number,
+        'mobile_brand'=>$mobile_brand,
+        'mobile_model'=>$mobile_model,
+        'mobile_color'=>$mobile_color,
+        'mobile_status'=>$mobile_status,
+        'mobile_storage'=>$mobile_storage,
+        'images_gallery'=>$images,
+
+    );
 }
-$context['contact_number']=get_field('contact_number');
+$context['contact_number']=get_field('ad_contact_number');
 $key = 'ads_views_count';
 $post_id = get_the_ID();
 $count = (int) get_post_meta( $post_id, $key, true );

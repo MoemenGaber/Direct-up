@@ -234,15 +234,6 @@ class StarterSite extends Timber\Site {
         return \Timber\Timber::get_posts($args);
     }
 
-    public function price_filter($price){
-        $final_price = $price;
-        if(is_string($price)){
-            $final_price = $price;
-        }else{
-            $final_price = $price.' SR';
-        }
-        return $final_price;
-    }
      public function print_all_subcategories(){
         $ad_categories = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>0));
         foreach ($ad_categories as $ad_category){

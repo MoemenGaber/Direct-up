@@ -53,32 +53,34 @@ $post_arr = array(
 );
 $post_id = wp_insert_post( $post_arr );
 
+
+// Ganeral fields
+
+    update_field('ad_price',$ad_price,$post_id);
+    update_field('ad_city',$ad_city,$post_id);
+    update_field('ad_description',$ad_description,$post_id);
+    $user_phone=get_user_meta(get_current_user_id(),'user_phone',true);
+    update_field('contact_number',$user_phone,$post_id);
+
+
 // Car Fields
-update_field('car_type',$car_type,$post_id);
-update_field('car_sub_model',$car_model,$post_id);
-update_field('car_year',$car_year,$post_id);
-update_field('car_status',$car_status,$post_id);
-update_field('car_kilometers',$car_kilometers,$post_id);
-update_field('car_gear_type',$car_gear,$post_id);
-update_field('car_petrol_type',$car_petrol_type,$post_id);
-update_field('car_extra_addons',$car_addons,$post_id);
-update_field('car_payment',$car_payment,$post_id);
-update_field('ad_price',$ad_price,$post_id);
-update_field('ad_city',$ad_city,$post_id);
+    update_field('car_type',$car_type,$post_id);
+    update_field('car_sub_model',$car_model,$post_id);
+    update_field('car_year',$car_year,$post_id);
+    update_field('car_status',$car_status,$post_id);
+    update_field('car_kilometers',$car_kilometers,$post_id);
+    update_field('car_gear_type',$car_gear,$post_id);
+    update_field('car_petrol_type',$car_petrol_type,$post_id);
+    update_field('car_extra_addons',$car_addons,$post_id);
+    update_field('car_payment',$car_payment,$post_id);
 
 // Mobile Fields
-update_field('mobile_brand',$mobile_brand,$post_id);
-update_field('mobile_city',$ad_city,$post_id);
-update_field('mobile_model',$mobile_model,$post_id);
-update_field('mobile_storage',$mobile_storage,$post_id);
-update_field('mobile_color',$mobile_color,$post_id);
-update_field('mobile_status',$mobile_status,$post_id);
-
-// Ganeral
-
-update_field('ad_description',$ad_description,$post_id);
-$user_phone=get_user_meta(get_current_user_id(),'user_phone',true);
-update_field('contact_number',$user_phone,$post_id);
+    update_field('mobile_brand',$mobile_brand,$post_id);
+    update_field('mobile_city',$ad_city,$post_id);
+    update_field('mobile_model',$mobile_model,$post_id);
+    update_field('mobile_storage',$mobile_storage,$post_id);
+    update_field('mobile_color',$mobile_color,$post_id);
+    update_field('mobile_status',$mobile_status,$post_id);
 
 
     upload_images_to_ad($post_id);

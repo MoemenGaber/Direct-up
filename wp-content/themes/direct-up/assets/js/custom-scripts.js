@@ -13,8 +13,6 @@ class CustomScripts {
     _getSubCategories(){
         const categoriesList = document.querySelector('#choose-ad-cat');
         const subCategoriesDiv = document.querySelectorAll('.sub_cat_list');
-        var finalParentCat= document.querySelector('.final_parent_cat');
-        var finalSubCat= document.querySelector('.final_sub_cat');
         if(categoriesList){
         categoriesList.addEventListener('click',function (e) {
             subCategoriesDiv.forEach(function (e) {
@@ -23,15 +21,28 @@ class CustomScripts {
             var parantCatID = e.target.getAttribute('data-cat-id');
             var subCategoriesList = document.querySelector('#sub-categories-list-'+parantCatID);
             subCategoriesList.style.display='block';
-            finalParentCat.setAttribute('value',parantCatID);
             subCategoriesList.addEventListener('click',function (v) {
                 v.preventDefault();
-                finalSubCat.setAttribute('value',v.target.getAttribute('data-sub-cat-id'));
                 jQuery('#departmentModel').modal('hide');
                 jQuery('.add-new-ad-form').removeClass('d-none')
                 var category_form=document.querySelector('#cat-'+parantCatID);
                 category_form.classList.remove('d-none');
-                ;
+                // final cat input
+                var finalCategoryInput = document.createElement('input');
+                finalCategoryInput.setAttribute('name','final_parent_cat');
+                finalCategoryInput.setAttribute('class','final_parent_cat');
+                finalCategoryInput.setAttribute('value',parantCatID);
+                finalCategoryInput.hidden=true;
+
+                // final subcat input
+                var finalSubCategoryInput = document.createElement('input');
+                finalSubCategoryInput.setAttribute('name','final_sub_cat');
+                finalSubCategoryInput.setAttribute('class','final_sub_cat');
+                finalSubCategoryInput.setAttribute('value',v.target.getAttribute('data-sub-cat-id'));
+                finalSubCategoryInput.hidden=true;
+
+                category_form.appendChild(finalCategoryInput);
+                category_form.appendChild(finalSubCategoryInput);
             });
 
 

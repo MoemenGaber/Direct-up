@@ -90,9 +90,66 @@
             "delay": 0
         },
         {
+            "key": "field_61c3535c40a3a",
+            "label": "رقم التواصل",
+            "name": "ad_contact_number",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_61c2dc44b17a0",
+            "label": "السعر",
+            "name": "ad_price",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_61af11973c5ae",
             "label": "المدينة",
             "name": "ad_city",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_61c353ea68c9c",
+            "label": "واتس آب",
+            "name": "ad_whatsapp_number",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -147,66 +204,9 @@
             "maxlength": ""
         },
         {
-            "key": "field_61c2dc44b17a0",
-            "label": "السعر",
-            "name": "ad_price",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_61af11973c6ad",
             "label": "طريقة الدفع",
             "name": "equipment_payment_type",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_61c3535c40a3a",
-            "label": "رقم التواصل",
-            "name": "contact_number",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_61c353ea68c9c",
-            "label": "واتس آب",
-            "name": "whatsapp_number",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -248,5 +248,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1640210683
+    "modified": 1641781750
 }

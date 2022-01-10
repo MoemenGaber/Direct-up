@@ -2990,3 +2990,7 @@ font-weight: bolder;
 .addPhoto .file{
   margin-top: 2.5rem !important;
 }
+.delete_ad_btn{
+  background: #ee3163;
+  color:white;
+}

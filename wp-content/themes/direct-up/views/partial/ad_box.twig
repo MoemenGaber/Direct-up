@@ -20,7 +20,12 @@
                     {% if user %}
                         {{ ad.ID|get_favorite_btn(user_data.ID) }}
                     {% endif %}
+                    {% if fn('is_page','profile') %}
+                        <button type="button" class="call r_br_btn ml_1">تعديل</button>
+                        <button type="button" class="call r_br_btn ml_1 delete_ad_btn" id="delete_ad_btn" data-post-id="{{ ad.ID }}">حذف</button>
+                    {% else %}
                     <a class="call r_br_btn ml_1" href="tel:{{ ad.contact_number }}"> <small>اتصل</small></a>
+                    {% endif %}
                     {% if ad.whatsapp_number %}
 {#                        <a class="whats" href="#"> <img src="{{theme.link}}/assets/img/whats.svg" alt="whats"></a>#}
                     {% endif %}

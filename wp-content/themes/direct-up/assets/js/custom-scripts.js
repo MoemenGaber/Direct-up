@@ -8,17 +8,45 @@ class CustomScripts {
             document.querySelector('.chooseDepart').click();
         }
         this._refreshPageWhenCloseModal();
+        this._deletePost();
+    }
+
+    _deletePost(){
+        const deleteBtn= document.querySelectorAll('#delete_ad_btn');
+        deleteBtn.forEach(function (e) {
+            e.addEventListener('click',function (v) {
+                v.preventDefault();
+                var postID = e.getAttribute('data-post-id');
+                jQuery.ajax({
+                    type: "post",
+                    dataType: "json",
+                    url: my_ajax_object.ajax_url,
+                    data: {
+                        action:'delete_draft_post',
+                        post_id:postID
+                    },
+                    success: function(response){
+                        if (response.deleted == 'yes'){
+                           location.reload();
+                        }else{
+                        }
+                    }
+                });
+            })
+        })
     }
 
     _refreshPageWhenCloseModal(){
         const closeNewAdModal= document.querySelector('#modal-new-ad-close');
         const closeNewAdModalX= document.querySelector('#modal-new-ad-close-x');
-        closeNewAdModal.addEventListener('click',function (e) {
-            location.replace('http://direct-up.com/');
-        });
-        closeNewAdModalX.addEventListener('click',function (e) {
-            location.replace('http://direct-up.com/');
-        });
+        if(closeNewAdModal) {
+            closeNewAdModal.addEventListener('click', function (e) {
+                location.replace('http://direct-up.com/');
+            });
+            closeNewAdModalX.addEventListener('click', function (e) {
+                location.replace('http://direct-up.com/');
+            });
+        }
     }
 
 

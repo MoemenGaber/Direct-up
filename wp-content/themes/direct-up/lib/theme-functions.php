@@ -58,6 +58,27 @@ function wpdocs_ahir_redirect_after_logout() {
     exit();
 }
 
+function delete_draft_post(){
+
+    $post_to_delete= $_POST['post_id'];
+  $delete_post=  wp_delete_post($post_to_delete);
+  if($delete_post){
+    $result=array(
+      'deleted'=>'yes',
+    );
+  }else{
+      $result=array(
+          'deleted'=>'no',
+      );
+  }
+    echo json_encode($result);
+    die();
+}
+
+add_action("wp_ajax_delete_draft_post", "delete_draft_post");
+add_action("wp_ajax_nopriv_delete_draft_post", "delete_draft_post");
+
+
 // Login
 
 function redirect_login_page() {

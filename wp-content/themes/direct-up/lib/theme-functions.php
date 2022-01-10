@@ -1,14 +1,16 @@
 <?php
 
-function get_sub_categories_new_ad(){
-$parent_id=$_POST['category_id'];
-    $termchildren = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>$parent_id));
-    echo json_encode($termchildren);
-die();
-}
+//function get_sub_categories_new_ad(){
+//$parent_id=$_POST['category_id'];
+//    $termchildren = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>$parent_id));
+//    echo json_encode($termchildren);
+//die();
+//}
+//
+//add_action("wp_ajax_get_sub_categories_new_ad", "get_sub_categories_new_ad");
+//add_action("wp_ajax_nopriv_get_sub_categories_new_ad", "get_sub_categories_new_ad");
+//
 
-add_action("wp_ajax_get_sub_categories_new_ad", "get_sub_categories_new_ad");
-add_action("wp_ajax_nopriv_get_sub_categories_new_ad", "get_sub_categories_new_ad");
 
 
 function upload_images_to_ad($post_id){

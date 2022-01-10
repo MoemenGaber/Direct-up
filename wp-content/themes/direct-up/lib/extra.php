@@ -243,6 +243,18 @@ class StarterSite extends Timber\Site {
         }
         return $final_price;
     }
+     public function print_all_subcategories(){
+        $ad_categories = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>0));
+        foreach ($ad_categories as $ad_category){
+            $termchildren = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>$ad_category->term_id));
+            echo '<ul class="sub_cat_list" id="sub-categories-list-'.$ad_category->term_id.'" style="display:none">';
+            foreach ($termchildren as $subcategory){
+                echo '<li class="border-bottom ptb_1" data-sub-cat-id="'.$subcategory->term_id.'" data="'.$subcategory->name.'">'.$subcategory->name.'</li>';
+            }
+            echo '</ul>';
+        }
+
+    }
 
 
     /** This is where you can add your own functions to twig.
@@ -260,6 +272,8 @@ class StarterSite extends Timber\Site {
         $twig->addFilter( new Twig\TwigFilter( 'get_ad_thumb', array( $this, 'get_ad_thumb' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'get_related_ads', array( $this, 'get_related_ads' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'price_filter', array( $this, 'price_filter' ) ) );
+        $twig->addFunction( new TwigFunction('print_all_subcategories', array( $this, 'print_all_subcategories' )
+        ) );
         return $twig;
     }
     

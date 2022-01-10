@@ -12,40 +12,17 @@ class CustomScripts {
 
     _getSubCategories(){
         const categoriesList = document.querySelector('#choose-ad-cat');
-        const subCategoriesDiv = document.querySelector('.sub_cat_popup');
+        const subCategoriesDiv = document.querySelectorAll('.sub_cat_list');
         const finalParentCat= document.querySelector('.final_parent_cat');
         const finalSubCat= document.querySelector('.final_sub_cat');
         if(categoriesList){
         categoriesList.addEventListener('click',function (e) {
-            subCategoriesDiv.innerHTML= '';
-            const cat_id = e.target.getAttribute('data-cat-id');
-
-        jQuery.ajax({
-            type: "post",
-            dataType: "json",
-            url: my_ajax_object.ajax_url,
-            data: {
-                action:'get_sub_categories_new_ad',
-                category_id:cat_id
-            },
-            success: function(msg){
-                msg.forEach(function (item) {
-                    subCategoriesDiv.innerHTML += '<li class="border-bottom ptb_1" data-sub-cat-id="'+item.term_id+'" data="'+item.name+'">'+item.name+'</li>';
-                    finalParentCat.setAttribute('value',cat_id);
-                })
-                $('.sub_cat_popup li').on('click', function () {
-                    $('.sub_cat_popup li').removeClass('active');
-                    $(this).addClass('active');
-                    cat = $(this).attr('data')
-                    var category_form=document.querySelector('#cat-'+cat_id);
-                    category_form.classList.remove('d-none');
-                    var subCatId= $(this).attr('data-sub-cat-id');
-                    finalSubCat.setAttribute('value',subCatId);
-                    $('#departmentModel').modal('hide');
-                    $('.add-new-ad-form').removeClass('d-none')
-                });
-            }
-         });
+            subCategoriesDiv.forEach(function (e) {
+               e.style.display='none';
+            });
+            var parantCatID = e.target.getAttribute('data-cat-id');
+            var subCategoriesList = document.querySelector('#sub-categories-list-'+parantCatID);
+            subCategoriesList.style.display='block';
         });
         }
     }

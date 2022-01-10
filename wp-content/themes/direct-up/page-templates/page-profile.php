@@ -102,7 +102,7 @@ $context['user_data']=array(
     }
     $context['views_count']=$views;
 
-
+    $context['edit_ad_page']=get_permalink(get_page_by_path('edit-ad'));
 }else{
     wp_safe_redirect(get_permalink(get_page_by_path('login')));
 }

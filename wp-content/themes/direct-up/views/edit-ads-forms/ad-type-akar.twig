@@ -15,51 +15,50 @@
             <div class="row mt_3">
                 <div class="col-md-6">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#model">مخصصة لـ</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#model">{{ post.akar_type }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="akar-type" id="model">
-                            <option value="" selected disabled>العقار - الارض مخصصة لـ</option>
-                            <option value="سكنية">سكنية</option>
-                            <option value="تجارية">تجارية</option>
-                            <option value="زراعية">زراعية</option>
-                            <option value="صناعية">صناعية</option>
-                            <option value="الاستخدام المتعدد">الاستخدام المتعدد</option>
-                            <option value="آخر">آخر</option>
+                            <option value="سكنية" {% if 'سكنية' == post.akar_type %} selected {% endif %}>سكنية</option>
+                            <option value="تجارية" {% if 'تجارية' == post.akar_type %} selected {% endif %}>تجارية</option>
+                            <option value="زراعية" {% if 'زراعية' == post.akar_type %} selected {% endif %}>زراعية</option>
+                            <option value="صناعية" {% if 'صناعية' == post.akar_type %} selected {% endif %}>صناعية</option>
+                            <option value="الاستخدام المتعدد" {% if 'الاستخدام المتعدد' == post.akar_type %} selected {% endif %}>الاستخدام المتعدد</option>
+                            <option value="آخر" {% if 'آخر' == post.akar_type %} selected {% endif %}>آخر</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <input name="akar-size" class="w-100 mtb_1" type="text" placeholder="مساحة الأرض">
+                    <input name="akar-size" class="w-100 mtb_1" type="text" value="{{ post.akar_size }}" placeholder="مساحة الأرض">
                 </div>
                 <div class="col-sm-12 mb-2">
                     <h3 class="ml_1 font-bold">طريقه الدفع</h3>
                     <div class="d-flex align-items-center flex-wrap">
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="akar-payment-type" value="كاش">
+                            <input type="radio" name="akar-payment-type" value="كاش" {% if 'كاش' == post.akar_payment_type %} checked {% endif %}>
                             <label>كاش</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="akar-payment-type" value="تحويل بنكي">
+                            <input type="radio" name="akar-payment-type" value="تحويل بنكي" {% if 'تحويل بنكي' == post.akar_payment_type %} checked {% endif %}>
                             <label>تحويل بنكي</label>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (موبايل سامسونج A70 بحالة جيدة للبيع)">
+                    <input name="ad-title" class="w-100 mtb_1" value="{{ post.post_title }}" type="text" placeholder="اسم الاعلان مثال : (موبايل سامسونج A70 بحالة جيدة للبيع)">
                 </div>
                 <div class="col-sm-12">
-                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان"></textarea>
+                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان">{{ post.ad_description }}
+                    </textarea>
                 </div>
                 <div class="col-md-6 position-relative">
-                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required>
+                    <input name="ad-price" class="w-100 mtb_1" type="text" value="{{ post.ad_price }}" placeholder="السعر المطلوب" style="direction: inherit;" required>
                     <label class="currancy" for="">ريال سعودي</label>
                 </div>
                 <div class="col-md-6 position-relative">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#city">{{ post.ad_city }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
-                            <option value="" selected disabled>اختر المدينة او الحي</option>
                             {% for city in ad_cities_options %}
-                                <option value="{{ city.city }}">{{ city.city }}</option>
+                                <option value="{{ city.city }}" {% if city.city == post.ad_city %} selected {% endif %}>{{ city.city }}</option>
                             {% endfor %}
                         </select>
                     </div>

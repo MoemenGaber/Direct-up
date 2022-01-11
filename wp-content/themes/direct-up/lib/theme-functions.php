@@ -159,23 +159,15 @@ function add_post_to_favorites(){
     $user_id = (int)$_POST['userID'];
     $post_id = (int)$_POST['postID'];
     $old_user_posts = get_user_meta($user_id,'favorite_ads',true);
-    if(!$old_user_posts){
-        $posts=array();
-        array_push($posts,$post_id);
-        add_user_meta($user_id,'favorite_ads',$posts);
+    $new_values=array();
+    if(empty($old_user_posts) || !in_array($post_id,$old_user_posts)) {
+        array_push($new_values,$post_id);
+    }else{
+        $key = array_search($post_id, $old_user_posts);
+        unset($old_user_posts[$key]);
+        $new_values=$old_user_posts;
     }
-    if(!empty($old_user_posts) && in_array($post_id,$old_user_posts)){
-            $key = array_search($post_id, $old_user_posts);
-            unset($old_user_posts[$key]);
-            update_user_meta($user_id,'favorite_ads',$old_user_posts);
-        }else{
-        array_push($old_user_posts,$post_id);
-
-        update_user_meta($user_id,'favorite_ads',$old_user_posts);
-    }
-
-
-    var_dump(get_user_meta($user_id,'favorite_ads',true));
+        update_user_meta($user_id,'favorite_ads',$new_values);
     die();
 }
 add_action("wp_ajax_add_post_to_favorites", "add_post_to_favorites");

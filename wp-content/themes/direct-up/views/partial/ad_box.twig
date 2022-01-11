@@ -19,8 +19,13 @@
                 <div class="d-flex mt_1 btns align-items-center dn-mobile">
 
                     {% if fn('is_page','profile') %}
+                        {% if favorite != 'yes' %}
                         <a type="button" class="call r_br_btn ml_1" href="{{ edit_ad_page }}?post_id={{ ad.ID }}">تعديل</a>
                         <button type="button" class="call r_br_btn ml_1 delete_ad_btn" id="delete_ad_btn" data-post-id="{{ ad.ID }}">حذف</button>
+                            {% else %}
+                                <a class="call r_br_btn ml_1" href="tel:{{ ad.contact_number }}"> <small>اتصل</small></a>
+
+                        {% endif %}
                     {% else %}
                     <a class="call r_br_btn ml_1" href="tel:{{ ad.contact_number }}"> <small>اتصل</small></a>
                     {% endif %}

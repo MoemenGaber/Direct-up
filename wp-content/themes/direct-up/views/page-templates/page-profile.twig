@@ -92,6 +92,7 @@
                     <div class="tab-pane fade m-auto mw-90" id="wish-ads" role="tabpanel" aria-labelledby="wish-tab">
                         <div class="products list">
                             {% for ad in user_favourite_ads %}
+                                {% set favorite = 'yes' %}
                                 {% include 'partial/ad_box.twig' %}
                             {% endfor %}
 

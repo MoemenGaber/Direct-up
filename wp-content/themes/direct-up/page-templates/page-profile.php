@@ -77,7 +77,6 @@ $context['user_data']=array(
     $favorite_ids= get_user_meta($user->data->ID,'favorite_ads',true);
     if(($favorite_ids)) {
         $favorite_args = array(
-            'author' => $user->data->ID,
             'post__in' => $favorite_ids,
             'post_status' => 'publish',
             'orderby' => 'post_date',

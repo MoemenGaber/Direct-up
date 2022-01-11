@@ -43,6 +43,9 @@ class custom_taxonomies
             'show_admin_column'          => true,
             'show_in_nav_menus'          => true,
             'show_tagcloud'              => true,
+            'capabilities'=>array(
+                'assign_terms'=>'read',
+            ),
         );
         register_taxonomy( 'ad_categories', [ 'ads' ], $args );
 

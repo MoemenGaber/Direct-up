@@ -14,7 +14,7 @@ $context         = Timber::context();
 $timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
 $templates        = array( 'views/single-ads.twig' );
-
+$context['user_data_id']=get_current_user_id();
 
 $post_categories= get_the_terms($timber_post->ID,'ad_categories');
 if(has_term('cars','ad_categories',$timber_post)){

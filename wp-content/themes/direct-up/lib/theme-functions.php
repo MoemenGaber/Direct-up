@@ -170,6 +170,7 @@ function add_post_to_favorites(){
             update_user_meta($user_id,'favorite_ads',$old_user_posts);
         }else{
         array_push($old_user_posts,$post_id);
+
         update_user_meta($user_id,'favorite_ads',$old_user_posts);
     }
 

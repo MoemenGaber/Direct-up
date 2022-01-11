@@ -6,12 +6,10 @@
         <div style="display: none" class="plr_2 bg-light br ptb_1 mt_3 mw-80 m-auto">
             <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat1" value="">
             <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat2" value="">
-            <input type="text" class="final_parent_cat" name="final_parent_cat" value="" hidden>
-            <input type="text" class="final_sub_cat" name="final_sub_cat" value="" hidden>
 
         </div>
         <button style="display: none" class="chooseDepart ms-2 bg-transparent p-0 border-0 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#departmentModel">اختر القسم                            </button><a class="changeDepart ms-2" href="#"> </a>
-        <div class="all-ad-info d-none" id="cat-{{ 'equipment'|get_category_id }}">
+        <div class="all-ad-info {% if ad_category_slug %} {% else %}d-none {% endif %}" id="cat-{{ 'equipment'|get_category_id }}">
             <div class="sec_tit"> <span>1</span>
                 <h2>تفاصيل الاعلان</h2>
             </div>
@@ -30,8 +28,8 @@
                             <label>كاش</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="equ-payment-type" value="تقسيط">
-                            <label>نقسيط</label>
+                            <input type="radio" name="equ-payment-type" value="تحويل بنكي">
+                            <label>تحويل بنكي</label>
                         </div>
                     </div>
                 </div>
@@ -49,9 +47,10 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
-                            <option value="" disabled>اختر المدينة او الحي</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
+                            <option value="" selected disabled>اختر المدينة او الحي</option>
+                            {% for city in ad_cities_options %}
+                                <option value="{{ city.city }}">{{ city.city }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

@@ -165,7 +165,7 @@ class StarterSite extends Timber\Site {
     }
     public function get_favorite_btn($post_id,$user_id){
         $user_favorite= get_user_meta($user_id,'favorite_ads',true);
-        if($user_favorite){
+        if(!empty($user_favorite)){
         if(!in_array($post_id,$user_favorite)){
             ?>
                 <a class="add_to_wish g_br_btn ml_1" href="#" data-ad-id="<?php echo $post_id; ?>" data-user-id="<?php echo $user_id; ?>">
@@ -181,7 +181,14 @@ class StarterSite extends Timber\Site {
             </a>
             <?php
         }
-    }
+    }else{
+            ?>
+            <a class="add_to_wish g_br_btn ml_1" href="#" data-ad-id="<?php echo $post_id; ?>" data-user-id="<?php echo $user_id; ?>">
+
+                <svg class="me-2 vm" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#B7BCCA"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg><small>أضف إلى المفضلة</small>
+            </a>
+            <?php
+        }
     }
     public function get_user_profile_pic($user_id){
        if(!empty(wp_get_attachment_image_url(get_user_meta($user_id,'user_pic',true)))){
@@ -234,14 +241,17 @@ class StarterSite extends Timber\Site {
         return \Timber\Timber::get_posts($args);
     }
 
-    public function price_filter($price){
-        $final_price = $price;
-        if(is_string($price)){
-            $final_price = $price;
-        }else{
-            $final_price = $price.' SR';
+     public function print_all_subcategories(){
+        $ad_categories = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>0));
+        foreach ($ad_categories as $ad_category){
+            $termchildren = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>$ad_category->term_id));
+            echo '<ul class="sub_cat_list" id="sub-categories-list-'.$ad_category->term_id.'" style="display:none">';
+            foreach ($termchildren as $subcategory){
+                echo '<li class="border-bottom ptb_1" data-sub-cat-id="'.$subcategory->term_id.'" data="'.$subcategory->name.'">'.$subcategory->name.'</li>';
+            }
+            echo '</ul>';
         }
-        return $final_price;
+
     }
 
 
@@ -260,6 +270,8 @@ class StarterSite extends Timber\Site {
         $twig->addFilter( new Twig\TwigFilter( 'get_ad_thumb', array( $this, 'get_ad_thumb' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'get_related_ads', array( $this, 'get_related_ads' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'price_filter', array( $this, 'price_filter' ) ) );
+        $twig->addFunction( new TwigFunction('print_all_subcategories', array( $this, 'print_all_subcategories' )
+        ) );
         return $twig;
     }
     

@@ -11,15 +11,32 @@
     </div>
     <main class="site_main">
         <div class="top_bar text-center ptb_2">
-            <h1 class="mt-0 mb-0">اضف اعلانك الان مجانا</h1>
+            <h1 class="mt-0 mb-0">{{ post.post_title }}</h1>
+                {{ ad_category_slug }}
         </div>
         <section class="new-ad">
             <div class="container ad-form">
-                {% include 'views/ads-forms/ad-type-car.twig' %}
-                {% include 'views/ads-forms/ad-type-mobile.twig' %}
-                {% include 'views/ads-forms/ad-type-akar.twig' %}
-                {% include 'views/ads-forms/ad-type-equipment.twig' %}
-                {% include 'views/ads-forms/ad-type-video-games.twig' %}
+                {% if ad_category_slug == 'cars' %}
+                    {% include 'views/edit-ads-forms/ad-type-car.twig' %}
+                {% endif %}
+                {% if ad_category_slug == 'mobile' %}
+                    {% include 'views/edit-ads-forms/ad-type-mobile.twig' %}
+                {% endif %}
+                {% if ad_category_slug == 'akar' %}
+                    {% include 'views/edit-ads-forms/ad-type-akar.twig' %}
+                {% endif %}
+                {% if ad_category_slug == 'equipment' %}
+                   {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
+                {% endif %}
+                {% if ad_category_slug == '%d8%a3%d9%81%d8%b1%d8%a7%d9%86' %}
+                   {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
+                {% endif %}
+                {% if ad_category_slug == 'video-games' %}
+                    {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
+                {% endif %}
+                {% if ad_category_slug == '%d8%a7%d8%ac%d9%87%d8%b2%d8%a9' %}
+                    {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
+                {% endif %}
             </div>
             <!-- ------- Modal --------------><div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -32,37 +49,6 @@
                             <p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p></div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ------- Department Modal --------------><div class="modal fade" id="departmentModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="departmentModelLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">الشروط و الاحكام </h5>
-                            <button type="button" id="modal-new-ad-close-x" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-6 border-end">
-                                    <h3 class="bg-red text-white mt-0 p_1">اختر القسم الرئيسي</h3>
-                                    <ul class="cat_popup" id="choose-ad-cat">
-                                        {% for cat in ad_categories %}
-                                            {% if cat.parent == 0 %}
-                                        <li data-cat-id="{{ cat.term_id }}" class="border-bottom ptb_1" data="{{ cat.name }}"> <img data-cat-id="{{ cat.term_id }}" class="me-2 vm"  src="{{ cat.term_id|get_term_icon }}" alt="icon">{{ cat.name }}</li>
-                                            {% endif %}
-                                        {% endfor %}
-
-                                    </ul>
-                                </div>
-                                <div class="col-6 border-end">
-                                    <h3 class="bg-red text-white mt-0 p_1">اختر القسم الفرعي</h3>
-                                    {{ function(['StarterSite', 'print_all_subcategories']) }}
-                                </div>
-                            </div></div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="modal-new-ad-close" data-bs-dismiss="modal">اغلاق</button>
                         </div>
                     </div>
                 </div>

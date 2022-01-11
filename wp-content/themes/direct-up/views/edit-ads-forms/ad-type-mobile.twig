@@ -1,5 +1,8 @@
 <div class="ad-type-car">
-    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'thank-you')) }}" enctype="multipart/form-data">
+    <div class="post_thumbnail" style="text-align: center">
+        <img style="height: 250px;width: auto" src="{{ post.thumbnail }}" alt="">
+    </div>
+    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'ad-edited-thank-you')) }}/?post_id={{ post.ID }}  " enctype="multipart/form-data">
         <div style="display: none" class="sec_tit">
             <h2>اختر القسم</h2>
         </div>
@@ -16,92 +19,65 @@
             <div class="row mt_3">
                 <div class="col-md-6">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#model">ادخل النوع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#model">{{ post.mobile_brand }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="mobile-type" id="model">
-                            <option value="" selected disabled>ادخل البراند</option>
-                            <option value="أبل">أبل</option>
-                            <option value="سامسونج">سامسونج</option>
-                            <option value="هواوي">هواوي</option>
-                            <option value="هونور">هونور</option>
-                            <option value="سوني">سوني</option>
-                            <option value="آخر">آخر</option>
+                            <option value="أبل" {% if 'أبل' == post.mobile_brand %} selected {% endif %}>أبل</option>
+                            <option value="سامسونج"  {% if 'سامسونج' == post.mobile_brand %} selected {% endif %}>سامسونج</option>
+                            <option value="هواوي"  {% if 'هواوي' == post.mobile_brand %} selected {% endif %}>هواوي</option>
+                            <option value="هونور"  {% if 'هونور' == post.mobile_brand %} selected {% endif %}>هونور</option>
+                            <option value="سوني"  {% if 'سوني' == post.mobile_brand %} selected {% endif %}>سوني</option>
+                            <option value="آخر"  {% if 'آخر' == post.mobile_brand %} selected {% endif %}>آخر</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <input name="mobile-model" class="w-100 mtb_1" type="text" placeholder="اكتب الموديل">
-                </div>
-                <div class="col-md-6">
-                    <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#year"> سنه الصنع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
-                        <select name="mobile-year" id="year">
-                            <option value="" selected disabled> سنه الصنع</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                        </select>
-                    </div>
+                    <input name="mobile-model" class="w-100 mtb_1" type="text" placeholder="اكتب الموديل" value="{{ post.mobile_model }}">
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     <h3 class="ml_1 font-bold">الحاله :</h3>
                     <div class="radioBtn ml_1">
-                        <input type="radio" name="mobile-status" value="new">
+                        <input type="radio" name="mobile-status" value="new" {% if 'new' == post.mobile_status %} checked {% endif %}>
                         <label>جديد</label>
                     </div>
                     <div class="radioBtn">
-                        <input type="radio" name="mobile-status" value="used">
+                        <input type="radio" name="mobile-status" value="used" {% if 'used' == post.mobile_status %} checked {% endif %}>
                         <label>مستعمل</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#km"> سعة التخزين</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#km">{{ post.mobile_storage }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="km" name="mobile-storage" required>
                             <option value="" selected disabled> سعة تخزين الجهاز </option>
-                            <option value="16GB">16GB</option>
-                            <option value="32GB">32GB</option>
-                            <option value="128GB">128GB</option>
-                            <option value="256GB">256GB</option>
-                            <option value="512GB">512GB</option>
-                            <option value="أخرى">أخرى</option>
+                            <option value="16GB" {% if '16GB' == post.mobile_storage %} selected {% endif %}>16GB</option>
+                            <option value="32GB" {% if '32GB' == post.mobile_storage %} selected {% endif %}>32GB</option>
+                            <option value="128GB" {% if '128GB' == post.mobile_storage %} selected {% endif %}>128GB</option>
+                            <option value="256GB" {% if '256GB' == post.mobile_storage %} selected {% endif %}>256GB</option>
+                            <option value="512GB" {% if '512GB' == post.mobile_storage %} selected {% endif %}>512GB</option>
+                            <option value="أخرى" {% if 'أخرى' == post.mobile_storage %} selected {% endif %}>أخرى</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <input name="mobile-color" class="w-100 mtb_1" type="text" placeholder="اللون">
-                </div>
-                <div class="col-sm-12 mb-2">
-                    <h3 class="ml_1 font-bold">طريقه الدفع</h3>
-                    <div class="d-flex align-items-center flex-wrap">
-                        <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="mobile-payment" value="كاش">
-                            <label>كاش</label>
-                        </div>
-                        <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="mobile-payment" value="تحويل بنكي">
-                            <label>تحويل بنكي</label>
-                        </div>
-                    </div>
+                    <input name="mobile-color" class="w-100 mtb_1" type="text" placeholder="اللون" value="{{ post.mobile_color }}">
                 </div>
                 <div class="col-sm-12">
-                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (موبايل سامسونج A70 بحالة جيدة للبيع)">
+                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (موبايل سامسونج A70 بحالة جيدة للبيع)" value="{{ post.title }}">
                 </div>
                 <div class="col-sm-12">
-                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان"></textarea>
+                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان">{{ post.ad_description }}</textarea>
                 </div>
                 <div class="col-md-6 position-relative">
-                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required>
+                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required value="{{ post.ad_price }}">
                     <label class="currancy" for="">ريال سعودي</label>
                 </div>
                 <div class="col-md-6 position-relative">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#city">{{ post.ad_city }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
                             <option value="" selected disabled>اختر المدينة او الحي</option>
                             {% for city in ad_cities_options %}
-                                <option value="{{ city.city }}">{{ city.city }}</option>
+                                <option value="{{ city.city }}"  {% if city.city == post.ad_city %} selected {% endif %}>{{ city.city }}</option>
                             {% endfor %}
                         </select>
                     </div>

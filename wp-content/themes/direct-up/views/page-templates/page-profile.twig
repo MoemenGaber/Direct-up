@@ -10,7 +10,7 @@
         <section class="myprofile">
             <div class="container"><ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">بياناتي الشخصيه</button>
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">بياناتي الشخصية</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="ads-tab" data-bs-toggle="tab" data-bs-target="#ads" type="button" role="tab" aria-controls="ads" aria-selected="false">إعلانات قيد المراجعة</button>
@@ -92,6 +92,7 @@
                     <div class="tab-pane fade m-auto mw-90" id="wish-ads" role="tabpanel" aria-labelledby="wish-tab">
                         <div class="products list">
                             {% for ad in user_favourite_ads %}
+                                {% set favorite = 'yes' %}
                                 {% include 'partial/ad_box.twig' %}
                             {% endfor %}
 

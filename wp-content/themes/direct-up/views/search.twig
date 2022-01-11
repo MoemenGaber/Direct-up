@@ -2,12 +2,28 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  {# see `base.twig:27` for where this block's content will be inserted #}
-  <div class="content-wrapper">
+<section class="ads">
+  {% if ads_count > 0 %}
+  <div class="container">
+    <h2 style="text-align: center">
+      نتائح البحث عن:
+    {{ title }}
+    </h2>
+  <div class="products list" id="market">
     {% for post in posts %}
-      {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+      {% include 'partial/search_ad_box.twig' %}
     {% endfor %}
-
+  </div>
+  </div>
+  {% else %}
+  <div class="container">
+  <h2 style="text-align: center">
+ لا يوجد نتائج بحث عن:
+    {{ title }}
+  </h2>
+  </div>
+  {% endif %}
+</section>
     {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
   </div>
 {% endblock %}

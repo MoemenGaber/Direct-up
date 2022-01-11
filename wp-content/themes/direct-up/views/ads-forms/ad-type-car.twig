@@ -6,14 +6,12 @@
         <div style="display: none" class="plr_2 bg-light br ptb_1 mt_3 mw-80 m-auto">
             <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat1" value="">
             <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat2" value="">
-            <input type="text" class="final_parent_cat" name="final_parent_cat" value="" hidden>
-            <input type="text" class="final_sub_cat" name="final_sub_cat" value="" hidden>
 
         </div>
         <button style="display: none" class="chooseDepart ms-2 bg-transparent p-0 border-0 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#departmentModel">اختر القسم                            </button><a class="changeDepart ms-2" href="#"> </a>
         <hr class="mtb_3">
 
-        <div class="all-ad-info d-none" id="cat-{{ 'cars'|get_category_id }}">
+        <div class="all-ad-info {% if ad_category_slug %} {% else %}d-none {% endif %}" id="cat-{{ 'cars'|get_category_id }}">
             <div class="sec_tit"> <span>1</span>
                 <h2>تفاصيل الاعلان</h2>
             </div>
@@ -22,12 +20,13 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#model">ادخل النوع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="car-type" id="model">
-                            <option value="" disabled>ادخل النوع</option>
+                            <option value="" selected disabled>ادخل النوع</option>
                             <option value="هيونداي">هيونداي</option>
                             <option value="تويوتا">تويوتا</option>
                             <option value="فورد">فورد</option>
                             <option value="شيفروليه">شيفروليه</option>
                             <option value="نيسان">نيسان</option>
+                            <option value="أخرى">أخرى</option>
                         </select>
                     </div>
                 </div>
@@ -38,7 +37,7 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#year"> سنه الصنع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="car-year" id="year">
-                            <option value="" disabled> سنه الصنع</option>
+                            <option value="" selected disabled> سنه الصنع</option>
                             <option value="2021">2021</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
@@ -62,7 +61,7 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#km"> الكيلو مترات</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="km" name="car-kilometers" required>
-                            <option value="" disabled> الكيلو مترات </option>
+                            <option value="" selected disabled> الكيلو مترات </option>
                             <option value="اقل من 50000">اقل من 50000</option>
                             <option value="اقل من 100000">اقل من 100000</option>
                             <option value="اقل من 150000">اقل من 150000</option>
@@ -188,8 +187,8 @@
                             <label>كاش</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="car-payment" value="تقسيط">
-                            <label>نقسيط</label>
+                            <input type="radio" name="car-payment" value="تحويل بنكي">
+                            <label>تحويل بنكي</label>
                         </div>
                     </div>
                 </div>
@@ -207,9 +206,10 @@
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
                         <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
-                            <option value="" disabled>اختر المدينة او الحي</option>
-                            <option value="الرياض">الرياض</option>
-                            <option value="جدة">جدة</option>
+                            <option value="" selected disabled>اختر المدينة او الحي</option>
+                            {% for city in ad_cities_options %}
+                                <option value="{{ city.city }}">{{ city.city }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

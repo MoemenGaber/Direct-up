@@ -66,7 +66,64 @@
         {
             "key": "field_61af012a1415b",
             "label": "المدينة",
-            "name": "mobile_city",
+            "name": "ad_city",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_61db9a034b9e9",
+            "label": "السعر",
+            "name": "ad_price",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_61dbbae14c08f",
+            "label": "رقم التواصل",
+            "name": "ad_contact_number",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_61db9a154b9ea",
+            "label": "رقم الواتس آب",
+            "name": "ad_whatsapp_number",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -195,6 +252,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
+    "show_in_rest": 0,
     "acfe_display_title": "",
     "acfe_autosync": [
         "json"
@@ -202,5 +260,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1638860924
+    "modified": 1641790212
 }

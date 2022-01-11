@@ -14,7 +14,7 @@ $context         = Timber::context();
 $timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
 $templates        = array( 'views/single-ads.twig' );
-
+$context['user_data_id']=get_current_user_id();
 
 $post_categories= get_the_terms($timber_post->ID,'ad_categories');
 if(has_term('cars','ad_categories',$timber_post)){
@@ -23,6 +23,10 @@ if(has_term('cars','ad_categories',$timber_post)){
     $context['ad_type'] = 'akar';
 }elseif (has_term('equipment','ad_categories',$timber_post)){
     $context['ad_type'] = 'equipment';
+}elseif(has_term('mobile','ad_categories',$timber_post)){
+    $context['ad_type']='mobile';
+}elseif(has_term('video-games','ad_categories',$timber_post)){
+    $context['ad_type']='equipment';
 }
 if($context['ad_type'] == 'cars'){
     $ad_description=get_field('ad_description',$timber_post->ID);
@@ -86,6 +90,7 @@ if($context['ad_type'] == 'cars'){
     $images=get_field('images',$timber_post->ID);
     $ad_details=array(
         'ad_description'=>$ad_description,
+        'ad_price'=>$ad_price,
         'ad_city'=> $akar_city,
         'equipment_type'=>$equipment_type,
         'equipment_storage'=>$equipment_storage,
@@ -94,13 +99,39 @@ if($context['ad_type'] == 'cars'){
         'images_gallery'=>$images,
 
     );
+}elseif($context['ad_type']=='mobile'){
+    $ad_description=get_field('ad_description',$timber_post->ID);
+    $ad_city=get_field('ad_city',$timber_post->ID);
+    $ad_price = get_field('ad_price',$timber_post->ID);
+    $ad_contact_number=get_field('ad_contact_number',$timber_post->ID);
+    $ad_whatsapp_number=get_field('ad_whatsapp_number',$timber_post->ID);
+    $mobile_brand=get_field('mobile_brand',$timber_post->ID);
+    $mobile_model=get_field('mobile_model',$timber_post->ID);
+    $mobile_storage=get_field('mobile_storage',$timber_post->ID);
+    $mobile_color=get_field('mobile_color',$timber_post->ID);
+    $mobile_status=get_field('mobile_status',$timber_post->ID);
+    $images=get_field('images',$timber_post->ID);
+    $ad_details=array(
+        'ad_description'=>$ad_description,
+        'ad_price'=>$ad_price,
+        'ad_whatsapp_number'=>$ad_whatsapp_number,
+        'mobile_brand'=>$mobile_brand,
+        'mobile_model'=>$mobile_model,
+        'mobile_color'=>$mobile_color,
+        'mobile_status'=>$mobile_status,
+        'mobile_storage'=>$mobile_storage,
+        'images_gallery'=>$images,
+
+    );
 }
-$context['contact_number']=get_field('contact_number');
+$context['contact_number']=get_field('ad_contact_number');
 $key = 'ads_views_count';
 $post_id = get_the_ID();
 $count = (int) get_post_meta( $post_id, $key, true );
 $count++;
 update_post_meta( $post_id, $key, $count );
+
+$context['views_count']=get_post_meta(get_the_ID(),'ads_views_count',true);
 
 $context['ad_details']=$ad_details;
 

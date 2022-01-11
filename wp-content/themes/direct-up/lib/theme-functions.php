@@ -1,14 +1,16 @@
 <?php
 
-function get_sub_categories_new_ad(){
-$parent_id=$_POST['category_id'];
-    $termchildren = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>$parent_id));
-    echo json_encode($termchildren);
-die();
-}
+//function get_sub_categories_new_ad(){
+//$parent_id=$_POST['category_id'];
+//    $termchildren = get_terms( 'ad_categories',array('hide_empty'=>0,'parent'=>$parent_id));
+//    echo json_encode($termchildren);
+//die();
+//}
+//
+//add_action("wp_ajax_get_sub_categories_new_ad", "get_sub_categories_new_ad");
+//add_action("wp_ajax_nopriv_get_sub_categories_new_ad", "get_sub_categories_new_ad");
+//
 
-add_action("wp_ajax_get_sub_categories_new_ad", "get_sub_categories_new_ad");
-add_action("wp_ajax_nopriv_get_sub_categories_new_ad", "get_sub_categories_new_ad");
 
 
 function upload_images_to_ad($post_id){
@@ -50,6 +52,31 @@ function upload_images_to_ad($post_id){
     }
 }
 
+add_action( 'wp_logout','wpdocs_ahir_redirect_after_logout' );
+function wpdocs_ahir_redirect_after_logout() {
+    wp_safe_redirect( home_url() );
+    exit();
+}
+
+function delete_draft_post(){
+
+    $post_to_delete= $_POST['post_id'];
+  $delete_post=  wp_delete_post($post_to_delete);
+  if($delete_post){
+    $result=array(
+      'deleted'=>'yes',
+    );
+  }else{
+      $result=array(
+          'deleted'=>'no',
+      );
+  }
+    echo json_encode($result);
+    die();
+}
+
+add_action("wp_ajax_delete_draft_post", "delete_draft_post");
+add_action("wp_ajax_nopriv_delete_draft_post", "delete_draft_post");
 
 
 // Login
@@ -132,22 +159,15 @@ function add_post_to_favorites(){
     $user_id = (int)$_POST['userID'];
     $post_id = (int)$_POST['postID'];
     $old_user_posts = get_user_meta($user_id,'favorite_ads',true);
-    if(!$old_user_posts){
-        $posts=array();
-        array_push($posts,$post_id);
-        add_user_meta($user_id,'favorite_ads',$posts);
+    $new_values=array();
+    if(empty($old_user_posts) || !in_array($post_id,$old_user_posts)) {
+        array_push($new_values,$post_id);
+    }else{
+        $key = array_search($post_id, $old_user_posts);
+        unset($old_user_posts[$key]);
+        $new_values=$old_user_posts;
     }
-    if(!empty($old_user_posts) && in_array($post_id,$old_user_posts)){
-            $key = array_search($post_id, $old_user_posts);
-            unset($old_user_posts[$key]);
-            update_user_meta($user_id,'favorite_ads',$old_user_posts);
-        }else{
-        array_push($old_user_posts,$post_id);
-        update_user_meta($user_id,'favorite_ads',$old_user_posts);
-    }
-
-
-    var_dump(get_user_meta($user_id,'favorite_ads',true));
+        update_user_meta($user_id,'favorite_ads',$new_values);
     die();
 }
 add_action("wp_ajax_add_post_to_favorites", "add_post_to_favorites");

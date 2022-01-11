@@ -1,65 +1,57 @@
 <div class="ad-type-car">
-    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'thank-you')) }}" enctype="multipart/form-data">
+    <div class="post_thumbnail" style="text-align: center">
+        <img style="height: 250px;width: auto" src="{{ post.thumbnail }}" alt="">
+    </div>
+    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'ad-edited-thank-you')) }}/?post_id={{ post.ID }}" enctype="multipart/form-data">
         <div style="display: none" class="sec_tit">
             <h2>اختر القسم</h2>
         </div>
         <div style="display: none" class="plr_2 bg-light br ptb_1 mt_3 mw-80 m-auto">
             <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat1" value="">
             <input class="d-none bg-transparent p-0 w-auto h-auto" id="cat2" value="">
+
         </div>
         <button style="display: none" class="chooseDepart ms-2 bg-transparent p-0 border-0 text-primary" type="button" data-bs-toggle="modal" data-bs-target="#departmentModel">اختر القسم                            </button><a class="changeDepart ms-2" href="#"> </a>
-        <div class="all-ad-info {% if ad_category_slug %} {% else %}d-none {% endif %}" id="cat-{{ 'akar'|get_category_id }}">
+        <div class="all-ad-info {% if ad_category_slug %} {% else %}d-none {% endif %}" id="cat-{{ 'equipment'|get_category_id }}">
             <div class="sec_tit"> <span>1</span>
                 <h2>تفاصيل الاعلان</h2>
             </div>
             <div class="row mt_3">
                 <div class="col-md-6">
-                    <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#model">مخصصة لـ</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
-                        <select name="akar-type" id="model">
-                            <option value="" selected disabled>العقار - الارض مخصصة لـ</option>
-                            <option value="سكنية">سكنية</option>
-                            <option value="تجارية">تجارية</option>
-                            <option value="زراعية">زراعية</option>
-                            <option value="صناعية">صناعية</option>
-                            <option value="الاستخدام المتعدد">الاستخدام المتعدد</option>
-                            <option value="آخر">آخر</option>
-                        </select>
-                    </div>
+                    <input name="equ-type" class="w-100 mtb_1" type="text" placeholder="النوع" value="{{ post.title }}">
                 </div>
                 <div class="col-md-6">
-                    <input name="akar-size" class="w-100 mtb_1" type="text" placeholder="مساحة الأرض">
+                    <input name="equ-storage" class="w-100 mtb_1" type="text" placeholder="مساحة التخزين (إن وجدت)" value="{{ post.equipment_storage }}">
                 </div>
                 <div class="col-sm-12 mb-2">
                     <h3 class="ml_1 font-bold">طريقه الدفع</h3>
                     <div class="d-flex align-items-center flex-wrap">
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="akar-payment-type" value="كاش">
+                            <input type="radio" name="equ-payment-type" value="كاش" {% if 'كاش' == post.equipment_payment_type %} checked {% endif %}>
                             <label>كاش</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="akar-payment-type" value="تحويل بنكي">
+                            <input type="radio" name="equ-payment-type" value="تحويل بنكي" {% if 'تحويل بنكي' == post.equipment_payment_type %} selected {% endif %}>
                             <label>تحويل بنكي</label>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (موبايل سامسونج A70 بحالة جيدة للبيع)">
+                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (موبايل سامسونج A70 بحالة جيدة للبيع)" value="{{ post.title }}">
                 </div>
                 <div class="col-sm-12">
-                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان"></textarea>
+                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان">{{ post.ad_description }}</textarea>
                 </div>
                 <div class="col-md-6 position-relative">
-                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required>
+                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" value="{{ post.ad_price }}" required>
                     <label class="currancy" for="">ريال سعودي</label>
                 </div>
                 <div class="col-md-6 position-relative">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#city">{{ post.ad_city }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
-                            <option value="" selected disabled>اختر المدينة او الحي</option>
                             {% for city in ad_cities_options %}
-                                <option value="{{ city.city }}">{{ city.city }}</option>
+                                <option value="{{ city.city }}" {% if city.city == post.ad_city %} selected {% endif %}>{{ city.city }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -80,8 +72,8 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-7">
-                    <p class="font-bold">اضافه صورة لاعلانك تعني مشاهدات اكثر</p>
-                    <p>اضف صور حقيقية للمنتج</p>
+                    <p class="font-bold">اضافة صورة لاعلانك تعني مشاهدات اكثر</p>
+                    <p>اضف صور حقيقيه للمنتج</p>
                     <p class="text-red">يمكنك رفع حتي 20 صورة</p>
                 </div>
             </div>

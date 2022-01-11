@@ -77,7 +77,6 @@ $context['user_data']=array(
     $favorite_ids= get_user_meta($user->data->ID,'favorite_ads',true);
     if(($favorite_ids)) {
         $favorite_args = array(
-            'author' => $user->data->ID,
             'post__in' => $favorite_ids,
             'post_status' => 'publish',
             'orderby' => 'post_date',
@@ -102,7 +101,7 @@ $context['user_data']=array(
     }
     $context['views_count']=$views;
 
-
+    $context['edit_ad_page']=get_permalink(get_page_by_path('edit-ad'));
 }else{
     wp_safe_redirect(get_permalink(get_page_by_path('login')));
 }

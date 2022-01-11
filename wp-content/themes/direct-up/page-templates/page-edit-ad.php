@@ -10,7 +10,9 @@ $templates        = array( 'views/page-templates/page-edit-ad.twig' );
 
 $ad_id= $_GET['post_id'];
 
+
 $ad_categories = get_the_terms($ad_id,'ad_categories')[0];
+
 $ad_category_slug=$ad_categories->slug;
 $context['ad_category_slug']=$ad_category_slug;
 $context['post']=Timber::get_post($ad_id);

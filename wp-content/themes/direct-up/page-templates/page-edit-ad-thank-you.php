@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Thank you */
+/* Template Name: Ad Edited Thank you */
 
 $context = Timber::context();
 $context['page_title']=get_the_title();
@@ -42,22 +42,14 @@ $equ_type=$_POST['equ-type'];
 $equ_storage=$_POST['equ-storage'];
 $equ_payment_type=$_POST['equ-payment-type'];
 
-// General
-    $parent_category = $_POST['final_parent_cat'];
-    $sub_category = $_POST['final_sub_cat'];
-
-$hierarchical_tax = array($parent_category,$sub_category); // Array of tax ids.
+$ad_id= $_GET['post_id'];
 
 $post_arr = array(
+    'ID'=>$ad_id,
     'post_title'   => $ad_title,
-    'post_status'  => 'draft',
-    'post_author'  => get_current_user_id(),
-    'post_type' => 'ads',
-    'tax_input'    => array(
-        'ad_categories'     => $hierarchical_tax,
-    ),
+    'post_status'=>'draft'
 );
-$post_id = wp_insert_post( $post_arr );
+$post_id = wp_update_post( $post_arr );
 
 
 // Ganeral fields

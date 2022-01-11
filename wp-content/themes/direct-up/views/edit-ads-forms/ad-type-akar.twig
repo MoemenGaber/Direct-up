@@ -1,5 +1,8 @@
 <div class="ad-type-car">
-    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'thank-you')) }}" enctype="multipart/form-data">
+    <div class="post_thumbnail" style="text-align: center">
+        <img style="height: 250px;width: auto" src="{{ post.thumbnail }}" alt="">
+    </div>
+    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'ad-edited-thank-you')) }}/?post_id={{ post.ID }}" enctype="multipart/form-data">
         <div style="display: none" class="sec_tit">
             <h2>اختر القسم</h2>
         </div>

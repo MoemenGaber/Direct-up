@@ -1,5 +1,8 @@
 <div class="ad-type-car">
-    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'thank-you')) }}" enctype="multipart/form-data">
+    <div class="post_thumbnail" style="text-align: center">
+    <img style="height: 250px;width: auto" src="{{ post.thumbnail }}" alt="">
+    </div>
+    <form class="m-width-780 m-auto" method="POST" action="{{ function('get_permalink', function('get_page_by_path', 'ad-edited-thank-you')) }}/?post_id={{ post.ID }}" enctype="multipart/form-data">
         <div style="display: none" class="sec_tit">
             <h2>اختر القسم</h2>
         </div>
@@ -18,66 +21,64 @@
             <div class="row mt_3">
                 <div class="col-md-6">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#model">ادخل النوع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#model">{{post.car_type}}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="car-type" id="model">
-                            <option value="" selected disabled>ادخل النوع</option>
-                            <option value="هيونداي">هيونداي</option>
-                            <option value="تويوتا">تويوتا</option>
-                            <option value="فورد">فورد</option>
-                            <option value="شيفروليه">شيفروليه</option>
-                            <option value="نيسان">نيسان</option>
-                            <option value="أخرى">أخرى</option>
+                            <option value="هيونداي" {% if 'هيونداي' == post.car_type %} selected {% endif %}>هيونداي</option>
+                            <option value="تويوتا" {% if 'تويوتا' == post.car_type %} selected {% endif %}>تويوتا</option>
+                            <option value="فورد" {% if 'فورد' == post.car_type %} selected {% endif %}>فورد</option>
+                            <option value="شيفروليه" {% if 'شيفروليه' == post.car_type %} selected {% endif %}>شيفروليه</option>
+                            <option value="نيسان" {% if 'نيسان' == post.car_type %} selected {% endif %}>نيسان</option>
+                            <option value="أخرى" {% if 'أخرى' == post.car_type %} selected {% endif %}>أخرى</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6">
-                         <input type="text" name="car-model" value="" class="w-100 mtb_1" placeholder="اختر الفئة">
+                         <input type="text" name="car-model" value="{{ post.car_sub_model }}" class="w-100 mtb_1" placeholder="اختر الفئة">
                 </div>
                 <div class="col-md-6">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#year"> سنه الصنع</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#year">{{post.car_year}}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select name="car-year" id="year">
-                            <option value="" selected disabled> سنه الصنع</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
+                            <option value="2021" {% if '2021' == post.car_year %} selected {% endif %}>2021</option>
+                            <option value="2020" {% if '2020' == post.car_year %} selected {% endif %}>2020</option>
+                            <option value="2019" {% if '2019' == post.car_year %} selected {% endif %}>2019</option>
+                            <option value="2018" {% if '2018' == post.car_year %} selected {% endif %}>2018</option>
+                            <option value="2017" {% if '2017' == post.car_year %} selected {% endif %}>2017</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     <h3 class="ml_1 font-bold">الحاله :</h3>
                     <div class="radioBtn ml_1">
-                        <input type="radio" name="car-status" value="new">
+                        <input type="radio" name="car-status" value="new" {% if 'جديد' == post.car_status %} checked {% endif %}>
                         <label>جديد</label>
                     </div>
                     <div class="radioBtn">
-                        <input type="radio" name="car-status" value="used">
+                        <input type="radio" name="car-status" value="used" {% if 'مستعمل' == post.car_status %} checked {% endif %}>
                         <label>مستعمل</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#km"> الكيلو مترات</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#km">{{ post.car_kilometers }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="km" name="car-kilometers" required>
                             <option value="" selected disabled> الكيلو مترات </option>
-                            <option value="اقل من 50000">اقل من 50000</option>
-                            <option value="اقل من 100000">اقل من 100000</option>
-                            <option value="اقل من 150000">اقل من 150000</option>
-                            <option value="اقل من 200000">اقل من 200000</option>
-                            <option value="اكثر من 200000">اكثر من 200000</option>
+                            <option value="اقل من 50000" {% if 'اقل من 50000' == post.car_kilometers %} selected {% endif %}>اقل من 50000</option>
+                            <option value="اقل من 100000" {% if 'اقل من 100000' == post.car_kilometers %} selected {% endif %}>اقل من 100000</option>
+                            <option value="اقل من 150000" {% if 'اقل من 150000' == post.car_kilometers %} selected {% endif %}>اقل من 150000</option>
+                            <option value="اقل من 200000" {% if 'اقل من 200000' == post.car_kilometers %} selected {% endif %}>اقل من 200000</option>
+                            <option value="اكثر من 200000" {% if 'اكثر من 200000' == post.car_kilometers %} selected {% endif %}>اكثر من 200000</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     <h3 class="ml_1 font-bold">نوع ناقل الحركه :</h3>
                     <div class="radioBtn ml_1">
-                        <input type="radio" name="car-gear" value="auto">
+                        <input type="radio" name="car-gear" value="auto" {% if 'auto' == post.car_gear_type %} checked {% endif %}>
                         <label>اوتوماتك</label>
                     </div>
                     <div class="radioBtn">
-                        <input type="radio" name="car-gear" value="manual">
+                        <input type="radio" name="car-gear" value="manual" {% if 'manual' == post.car_gear_type %} checked {% endif %}>
                         <label>يدوي</label>
                     </div>
                 </div>
@@ -85,19 +86,19 @@
                     <h3 class="ml_1 font-bold">نوع الوقود </h3>
                     <div class="d-flex align-items-center flex-wrap">
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="car-petrol-type" value="بنزين">
+                            <input type="radio" name="car-petrol-type" value="بنزين" {% if 'بنزين' == post.car_petrol_type %} checked {% endif %}>
                             <label>بنزين</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="car-petrol-type" value="ديزل">
+                            <input type="radio" name="car-petrol-type" value="ديزل" {% if 'ديزل' == post.car_petrol_type %} checked {% endif %}>
                             <label>ديزل</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="car-petrol-type" value="هايبرد">
+                            <input type="radio" name="car-petrol-type" value="هايبرد" {% if 'هايبرد' == post.car_petrol_type %} checked {% endif %}>
                             <label>هايبرد</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="car-petrol-type" value="كهربائي">
+                            <input type="radio" name="car-petrol-type" value="كهربائي" {% if 'كهربائي' == post.car_petrol_type %} checked {% endif %}>
                             <label>كهربائي</label>
                         </div>
                     </div>
@@ -105,110 +106,41 @@
                 <div class="col-md-6 mb-2">
                     <h3 class="ml_1 font-bold">الاضافات </h3>
                     <select name="car-addons[]" class="multi-select" multiple>
-                        <option value="قفل مركزي للأبواب">قفل مركزي للابواب</option>
-                        <option value="فتحة سقف">فتحه سقف</option>
-                        <option value="وسائل أمان مختلفة">وسائل امان مختلفة</option>
+                        <option value="قفل مركزي للأبواب" {% if 'قفل مركزي للأبواب' in post.car_extra_addons %} selected {% endif %}>قفل مركزي للابواب</option>
+                        <option value="فتحة سقف" {% if 'فتحة سقف' in post.car_extra_addons %} selected {% endif %}>فتحه سقف</option>
+                        <option value="وسائل أمان مختلفة" {% if 'وسائل أمان مختلفة' in post.car_extra_addons %} selected {% endif %}>وسائل امان مختلفة</option>
                     </select>
                 </div>
-    {#            <div class="col-sm-12 mb-2">#}
-    {#                <h3 class="ml_1 font-bold">اللون</h3>#}
-    {#                <div class="d-flex align-items-center flex-wrap">#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#f5f5dc"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#000000"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#2a5c96"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#964b00"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#008000"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#808080"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#800000"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#f39c12"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#ffc0cb"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#800080"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#ff0000"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#c0c0c0"></label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#40e0d0"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#ffffff"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#ff0"> </label>#}
-    {#                    </div>#}
-    {#                    <div class="radioBtn ml_1 mb-2">#}
-    {#                        <input type="radio" name="color">#}
-    {#                        <label class="color width-40 height-40 br" style="background-color:#d4af37"> </label>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
                 <div class="col-sm-12 mb-2">
                     <h3 class="ml_1 font-bold">طريقه الدفع</h3>
                     <div class="d-flex align-items-center flex-wrap">
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="car-payment" value="كاش">
+                            <input type="radio" name="car-payment" value="كاش"  {% if 'كاش' == post.car_payment %} checked {% endif %}>
                             <label>كاش</label>
                         </div>
                         <div class="radioBtn ml_1 mb-2">
-                            <input type="radio" name="car-payment" value="تحويل بنكي">
+                            <input type="radio" name="car-payment" value="تحويل بنكي"  {% if 'تحويل بنكي' == post.car_payment %} checked {% endif %}>
                             <label>تحويل بنكي</label>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <input name="ad-title" class="w-100 mtb_1" type="text" placeholder="اسم الاعلان مثال : (نيسان جوك 2017)">
+                    <input name="ad-title" class="w-100 mtb_1" type="text" value="{{ post.title }}" placeholder="اسم الاعلان مثال : (نيسان جوك 2017)">
                 </div>
                 <div class="col-sm-12">
-                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان"></textarea>
+                    <textarea class="w-100 mtb_1" name="ad-description" type="text" placeholder="وصــف الاعــلان">{{ post.ad_description }}</textarea>
                 </div>
                 <div class="col-md-6 position-relative">
-                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required>
+                    <input name="ad-price" class="w-100 mtb_1" type="number" placeholder="السعر المطلوب" style="direction: inherit;" required value="{{ post.ad_price }}">
                     <label class="currancy" for="">ريال سعودي</label>
                 </div>
                 <div class="col-md-6 position-relative">
                     <div class="select_style ml_4 bg-light d-flex align-items-center justify-content-between border mtb_1">
-                        <label class="text-tc" for="#city">اختر المدينة او الحي</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
+                        <label class="text-tc" for="#city">{{ post.ad_city }}</label><img class="mr_1" src="{{ theme.link }}/assets/img/arrow-dwn-dark.svg" alt="icon">
                         <select id="city" name="ad-city">
                             <option value="" selected disabled>اختر المدينة او الحي</option>
                             {% for city in ad_cities_options %}
-                                <option value="{{ city.city }}">{{ city.city }}</option>
+                                <option value="{{ city.city }}"  {% if city.city == post.ad_city %} selected {% endif %}>{{ city.city }}</option>
                             {% endfor %}
                         </select>
                     </div>

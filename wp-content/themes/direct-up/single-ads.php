@@ -25,6 +25,8 @@ if(has_term('cars','ad_categories',$timber_post)){
     $context['ad_type'] = 'equipment';
 }elseif(has_term('mobile','ad_categories',$timber_post)){
     $context['ad_type']='mobile';
+}elseif(has_term('video-games','ad_categories',$timber_post)){
+    $context['ad_type']='equipment';
 }
 if($context['ad_type'] == 'cars'){
     $ad_description=get_field('ad_description',$timber_post->ID);

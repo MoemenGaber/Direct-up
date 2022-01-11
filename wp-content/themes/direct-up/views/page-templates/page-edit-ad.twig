@@ -12,6 +12,7 @@
     <main class="site_main">
         <div class="top_bar text-center ptb_2">
             <h1 class="mt-0 mb-0">{{ post.post_title }}</h1>
+                {{ ad_category_slug }}
         </div>
         <section class="new-ad">
             <div class="container ad-form">
@@ -27,9 +28,15 @@
                 {% if ad_category_slug == 'equipment' %}
                    {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
                 {% endif %}
-                {#                {% if ad_category_slug == 'equipment' %}#}
-{#                    {% endif %}#}
-{#                {% include 'views/ads-forms/ad-type-video-games.twig' %}#}
+                {% if ad_category_slug == '%d8%a3%d9%81%d8%b1%d8%a7%d9%86' %}
+                   {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
+                {% endif %}
+                {% if ad_category_slug == 'video-games' %}
+                    {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
+                {% endif %}
+                {% if ad_category_slug == '%d8%a7%d8%ac%d9%87%d8%b2%d8%a9' %}
+                    {% include 'views/edit-ads-forms/ad-type-equipment.twig' %}
+                {% endif %}
             </div>
             <!-- ------- Modal --------------><div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">

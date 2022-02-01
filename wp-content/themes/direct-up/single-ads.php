@@ -10,6 +10,8 @@
  */
 
 
+use Timber\Timber;
+
 $context         = Timber::context();
 $timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
@@ -124,7 +126,7 @@ if($context['ad_type'] == 'cars'){
 
     );
 }
-$context['contact_number']=get_field('ad_contact_number');
+$context['contact_number']=get_field('ad_contact_number',$timber_post->ID);
 $key = 'ads_views_count';
 $post_id = get_the_ID();
 $count = (int) get_post_meta( $post_id, $key, true );

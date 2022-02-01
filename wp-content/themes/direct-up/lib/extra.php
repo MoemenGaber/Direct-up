@@ -18,6 +18,7 @@
 
 
 use Twig\TwigFunction;
+add_filter('show_admin_bar', '__return_false');
 
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $composer_autoload ) ) {

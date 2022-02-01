@@ -9,6 +9,7 @@ class CustomScripts {
         }
         this._refreshPageWhenCloseModal();
         this._deletePost();
+        this._closeMobileMenuWhenMenuLinkClicked();
     }
 
     _deletePost(){
@@ -111,6 +112,18 @@ class CustomScripts {
                 });
             });
         });
+    }
+
+    _closeMobileMenuWhenMenuLinkClicked(){
+        const menuLink = document.querySelectorAll('.nav-link');
+        const navbarMobile = document.querySelector('#navbarSupportedContent');
+        if(navbarMobile){
+            menuLink.forEach(function (e) {
+                e.addEventListener('click',function (event) {
+                 navbarMobile.classList.remove('show');
+                })
+            })
+        }
     }
 }
 

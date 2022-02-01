@@ -27,7 +27,7 @@
                         <form method="post" action="{{ function('get_permalink', function('get_page_by_path', 'profile')) }}" enctype="multipart/form-data">
 
                         <div class="d-flex align-items-center flex-wrap">
-                            <div class="border br p_1 text-center width-160 addPhoto flex-fill"> <img class="w-100 br" id="userImag" src="{{ function('wp_get_attachment_url',user_data.user_profile_pic) }}">
+                            <div class="border br p_1 text-center width-160 addPhoto flex-fill"> <img class="br" id="userImag" src="{{ function('wp_get_attachment_url',user_data.user_profile_pic) }}">
 
                                 <div class="file mt_1">
                                     <input id="_imageRender" type="file" name="user_profile_pic">
@@ -73,7 +73,7 @@
                     </form>
                     </div>
 
-                    <div class="tab-pane fade m-auto mw-90" id="ads" role="tabpanel" aria-labelledby="ads-tab">
+                    <div class="tab-pane fade m-auto " id="ads" role="tabpanel" aria-labelledby="ads-tab">
                         <div class="products list">
                            {% for ad in user_draft_ads %}
 
@@ -82,14 +82,14 @@
                            {% endfor %}
 
                         </div></div>
-                    <div class="tab-pane fade m-auto mw-90" id="wish" role="tabpanel" aria-labelledby="wish-tab">
+                    <div class="tab-pane fade m-auto " id="wish" role="tabpanel" aria-labelledby="wish-tab">
                         <div class="products list">
                             {% for ad in user_published_ads %}
                                 {% include 'partial/ad_box.twig' %}
                             {% endfor %}
 
                         </div></div>
-                    <div class="tab-pane fade m-auto mw-90" id="wish-ads" role="tabpanel" aria-labelledby="wish-tab">
+                    <div class="tab-pane fade m-auto " id="wish-ads" role="tabpanel" aria-labelledby="wish-tab">
                         <div class="products list">
                             {% for ad in user_favourite_ads %}
                                 {% set favorite = 'yes' %}

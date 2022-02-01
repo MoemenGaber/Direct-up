@@ -13,7 +13,10 @@
 <body>
 <header class="site_header">
     <div class="container">
-        <nav class="navbar navbar-expand-lg"><a class="navbar-brand ml-5" href="{{ site.link }}"> <img src="{{ theme.link }}/assets/img/logo.svg" alt="logo"></a>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+            <a class="navbar-brand ml-5" href="{{ site.link }}"> <img src="{{ theme.link }}/assets/img/logo.svg" alt="logo"></a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><img src="{{ theme.link }}/assets/img/menu.svg" alt="menu"></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
@@ -27,7 +30,12 @@
                 <ul class="d-flex align-items-center">
                     {% if user %}
                         {% set user_id = function('get_current_user_id') %}
-                    <li class="border-left border-right plr_1"> <a class="text-tc font-bold d-inline-flex align-items-center" href="{{ function('get_permalink', function('get_page_by_path', 'profile')) }}">حسابي<img class="ms-1" style="width:50px;height: 50px;border-radius: 30%" src="{{ user_id|get_user_profile_pic }}" alt="icon"></a></li>
+                    <li class="border-left border-right plr_1"> <a class="text-tc font-bold d-inline-flex align-items-center" href="{{ function('get_permalink', function('get_page_by_path', 'profile')) }}">حسابي
+                            {% if fn('wp_is_mobile') %}
+                            {% else %}
+                            <img class="ms-1 header_profile_picture" src="{{ user_id|get_user_profile_pic }}" alt="icon">
+                            {% endif %}
+                        </a></li>
                     {% else %}
 
             {% endif %}
@@ -38,9 +46,10 @@
                     {% endif %}
                 </ul>
             </div>
+        </div>
         </nav>
     </div>
-    <button class="ads bg-red text-white text-center ptb_1 plr_1 d-flex align-items-center justify-content-center border-0 w-100" type="button" data-bs-toggle="modal" data-bs-target="#addModal"><span class="font-regular me-2"> طريقة إضافه  </span><span class="font-bold"> اعلان مجاني</span><img class="ms-2" src="{{ theme.link }}/assets/img/info.svg" alt="info"></button>
+    <button class="how_to_add_ads ads bg-red text-white text-center ptb_1 plr_1 d-flex align-items-center justify-content-center border-0 w-100" type="button" data-bs-toggle="modal" data-bs-target="#addModal"><span class="font-regular me-2"> طريقة إضافه  </span><span class="font-bold"> اعلان مجاني</span><img class="ms-2" src="{{ theme.link }}/assets/img/info.svg" alt="info"></button>
 </header>
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin:auto;left:0">
     <div class="modal-dialog w-60 mw-100">

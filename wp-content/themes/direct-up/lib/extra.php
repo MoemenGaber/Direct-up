@@ -259,8 +259,8 @@ class StarterSite extends Timber\Site {
         $from=get_the_time('U',$post_id);
         $to=current_time('U');
        $date= human_time_diff($from, $to);
-       $english_arr=array('weeks','month','hours','hour');
-       $arabic_arr=array('اسابيع','شهر','ساعة','ساعة');
+       $english_arr=array('weeks','month','hours','hour','seconds','minutes','min');
+       $arabic_arr=array('اسابيع','شهر','ساعة','ساعة','ثانية','دقيقة','دقيقة');
        $new_date=str_replace($english_arr,$arabic_arr,$date);
         echo $new_date;
     }

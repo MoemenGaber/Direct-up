@@ -45,6 +45,7 @@ $equ_payment_type=$_POST['equ-payment-type'];
 // General
     $parent_category = $_POST['final_parent_cat'];
     $sub_category = $_POST['final_sub_cat'];
+    $whatsapp_number = $_POST['whatsapp-number'];
 
 $hierarchical_tax = array($parent_category,$sub_category); // Array of tax ids.
 
@@ -67,6 +68,7 @@ $post_id = wp_insert_post( $post_arr );
     update_field('ad_description',$ad_description,$post_id);
     $user_phone=get_user_meta(get_current_user_id(),'user_phone',true);
     update_field('contact_number',$user_phone,$post_id);
+    update_field('ad_whatsapp_number',$whatsapp_number,$post_id);
 
 
 // Car Fields

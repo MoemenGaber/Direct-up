@@ -214,6 +214,11 @@
                     </div>
                 </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-md-6 position-relative">
+                    <input style="text-align: right" name="whatsapp-number" class="w-100 mtb_1" type="text" placeholder="رقم الواتس آب">
+                </div>
+            </div>
             <hr class="mtb_3">
             <div class="sec_tit"> <span>2</span>
                 <h2>اضف الصور</h2>
@@ -222,7 +227,7 @@
                 <div class="cpl-sm-12 col-md-6 col-lg-5">
                     <div class="border br p_3 text-center"> <img class="w-40" src="{{ theme.link }}/assets/img/camera.svg" alt="pic">
                         <div class="file mt_2">
-                            <input name="images-gallery[]" type="file" multiple>
+                            <input name="images-gallery[]" type="file" multiple required>
                             <label class="red_btn">اضف صورة رئيسية</label>
                             <h3 class="font-bold text-success numberOfImages d-none"> </h3>
                         </div>

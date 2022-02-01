@@ -2375,6 +2375,9 @@ section {
   justify-content: space-between;
   align-items: flex-start;
 }
+.products.grid .whats{
+  display: none;
+}
 
 .products.grid .product {
   width: 32%;

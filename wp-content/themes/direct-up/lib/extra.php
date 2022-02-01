@@ -255,6 +255,16 @@ class StarterSite extends Timber\Site {
 
     }
 
+    public function get_the_ad_date($post_id){
+        $from=get_the_time('U',$post_id);
+        $to=current_time('U');
+       $date= human_time_diff($from, $to);
+       $english_arr=array('weeks','month','hours','hour');
+       $arabic_arr=array('اسابيع','شهر','ساعة','ساعة');
+       $new_date=str_replace($english_arr,$arabic_arr,$date);
+        echo $new_date;
+    }
+
 
     /** This is where you can add your own functions to twig.
      *
@@ -264,6 +274,7 @@ class StarterSite extends Timber\Site {
         $twig->addExtension( new Twig\Extension\StringLoaderExtension() );
         $twig->addFilter( new Twig\TwigFilter( 'myfoo', array( $this, 'myfoo' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'get_term_icon', array( $this, 'get_term_icon' ) ) );
+        $twig->addFilter( new Twig\TwigFilter( 'get_the_ad_date', array( $this, 'get_the_ad_date' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'get_category_posts', array( $this, 'get_category_posts' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'get_favorite_btn', array( $this, 'get_favorite_btn' ) ) );
         $twig->addFilter( new Twig\TwigFilter( 'get_user_profile_pic', array( $this, 'get_user_profile_pic' ) ) );

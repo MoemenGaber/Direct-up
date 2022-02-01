@@ -2297,7 +2297,7 @@ section {
 }
 
 .products .product {
-  background-color: #fff;
+  background-color: #fff !important;
   border-radius: 18px;
   margin-bottom: 2rem;
   position: relative;

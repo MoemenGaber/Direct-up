@@ -14,7 +14,9 @@
                     <p>{{ ad.ad_description|truncate(14) }}</p>
                 <div class="d-flex border-bottom flex-wrap" style="width: 300px;">
                     <p class="text-lightgray ml_1"><img class="me-2 vm" src="{{theme.link}}/assets/img/location.svg" alt="location">{{ ad.custom.ad_city }}</p>
-{#                    <p class="text-lightgray"><img class="me-2 vm" src="{{theme.link}}/assets/img/user.svg" alt="location" style="width:15px">{{ user_data.user_name }}</p>#}
+                    <p class="text-lightgray ml_1"><img class="me-2 vm" src="{{ theme.link }}/assets/img/time.svg" alt="time">منذ {{ ad.post_ID|get_the_ad_date }}</p>
+
+                    {#                    <p class="text-lightgray"><img class="me-2 vm" src="{{theme.link}}/assets/img/user.svg" alt="location" style="width:15px">{{ user_data.user_name }}</p>#}
                 </div>
                 <div class="d-flex mt_1 btns align-items-center dn-mobile">
 
@@ -30,7 +32,7 @@
                     <a class="call r_br_btn ml_1" href="tel:{{ ad.contact_number }}"> <small>اتصل</small></a>
                     {% endif %}
                     {% if ad.whatsapp_number %}
-{#                        <a class="whats" href="#"> <img src="{{theme.link}}/assets/img/whats.svg" alt="whats"></a>#}
+                        <a class="whats" href="#"> <img src="{{theme.link}}/assets/img/whats.svg" alt="whats"></a>
                     {% endif %}
                 </div>
             </div>
